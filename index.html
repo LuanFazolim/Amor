@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I love you</title>
+    <style>
+    body {
+        transition: background-color 0.5s;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        
+    }
+    .topo {
+        transition: background-color 0.5s;
+        color: #000000;
+        padding: 10;
+        text-align: center;
+    }
+
+    .topo h1, .topo h3, .topo nav a, .texto h1,  .texto h2, .texto h3{ 
+        transition: color 0.2s; 
+    }
+
+    .topo h1{
+        margin-top: -800;
+        padding-bottom: 10px;
+        
+    }
+    .topo h3{
+        font-size: 16px;
+        text-align: left;
+        padding: 10px;
+        margin-left: 85px;
+        color: #ffffff;
+
+    }
+
+    .logo {
+        width: 100px;
+        margin-top: 40px;
+    }
+    .topo2 {
+        
+        background-color: #ffffff;
+        margin: 0;
+        padding: 2px;
+    }
+
+    .mudar_cor1, .mudar_cor2, .mudar_cor3, .mudar_cor4, .mudar_cor5 { 
+        display: block; 
+        margin-top: -30px; 
+        margin-left: 10px; 
+        cursor: pointer; 
+        border: none;
+        background: none; 
+        color: #000000; } 
+
+    .mudar_cor1 { margin-top: -20px; } 
+    .mudar_cor2 { margin-left: 50px; }
+    .mudar_cor3 { margin-left: 90px; }
+    .mudar_cor4 { margin-left: 130px; }
+    .mudar_cor5 { margin-left: 170px; } 
+
+    .topo nav {
+
+        margin-top: -20px;
+        padding: 10px;
+    }
+
+    .topo nav a {
+
+        color: #000000;
+        text-align: center;
+        margin: 0 7px;
+        font-size: 20px;
+        text-decoration: none;
+    }
+    .inferior {
+    
+        color: #000000;
+        transition: background-color 0.5s;
+        background-color: #000000;
+        text-align: center;
+        position: fixed;
+        padding: 10px;
+        width: 100%;
+        bottom: 0;
+
+    }
+
+    .texto{
+
+        display: flex;
+        flex-direction: column;
+        
+    }
+
+    .texto h1{
+        color: #000;
+        text-align: center;
+        padding: 90px;
+        margin-bottom: 400px;
+        
+        
+    }
+    .texto h2{
+        margin-left: 40px;
+        color: #000;
+        
+    }
+    .texto h3{
+        color: #000;
+        text-align: center;
+        margin-left: 200px;
+        max-width: 77%;
+        margin-bottom: 500px;
+
+    }
+
+   
+
+
+
+
+    </style>
+    <script>
+      function FshaColor (cor){
+                const color = document.querySelectorAll('.texto h1, .texto h2, .texto h3, .container h1, .texto');
+                const Bcolor = document.querySelectorAll('.topo2, .inferior');
+                const Sdire =  document.querySelectorAll('.direita .foto');
+                const Sesq = document.querySelectorAll('.esquerda .foto');
+
+                color.forEach(element => {element.style.color = cor;});
+                Bcolor.forEach(element=> {element.style.backgroundColor = cor})
+                Sdire.forEach(img => { img.style.boxShadow =  `15px 15px 0px ${cor}`; });
+                Sesq.forEach(img => { img.style.boxShadow =  `-15px -15px 0px ${cor}`; });
+
+
+                
+
+                
+            }    
+        function carregarCores() {
+               const bgColor = localStorage.getItem('bgColor') || '#ffc5c5';
+               const topoColor = localStorage.getItem('topoColor') || '#c62727';
+               const textoColor = localStorage.getItem('textoColor') || '#ffffff';
+               const coracaoSrc = localStorage.getItem('coracaoSrc') || 'imagens/coracao/branco.png';
+               const navColor = localStorage.getItem('navColor') || '#ffffff';
+               const shaColor = localStorage.getItem('shaColor') || '#c62727';
+   
+               document.body.style.backgroundColor = bgColor;
+               document.querySelector('.topo').style.backgroundColor = topoColor;
+               document.querySelector('.topo').style.color = textoColor;
+               document.getElementById('coracao').src = coracaoSrc;
+               document.querySelectorAll('.topo nav a').forEach(link => {link.style.color = navColor;});
+               document.querySelector('.inferior').style.color= bgColor
+               FshaColor(shaColor)
+           }
+           carregarCores();
+    </script>
+
+
+</head>
+
+<body>
+    
+    
+    <div class="topo">
+    <img id= "coracao" src= "imagens/coracao/branco.png" alt= "logo" class= "logo">
+    <h1>EU TE AMO</h1>
+    <nav>
+        
+        <a href="index.html" target="_self">I love you</a>
+        <a href="album.html" target="_self">Album</a>
+    </nav>
+    <div class="topo2"></div>
+
+    <script>
+
+        const ver = ["#ff3131"];
+        const ver_cla = ["#ffc5c5"]
+        const bran = ["#ffffff"]
+        const azul = ["#0900ad"]
+        const azul_cla = ["#93b1ff"]
+        const pre = ["#000"]
+        const roxo = ["#a016a5"]
+        const ver_bor = ["#c62727"]
+        const azul_bor = ["#332e9b"]
+
+        const topo = document.querySelector('.topo');
+        const toponav = document.querySelectorAll('.topo nav a')
+        const coracao_ver = document.getElementById('coracao');
+        
+
+
+        function salvarCores(bgColor, topoColor, textoColor, coracaoSrc, navColor, shaColor) {
+                    
+                    localStorage.setItem('bgColor', bgColor);
+                    localStorage.setItem('topoColor', topoColor);
+                    localStorage.setItem('textoColor', textoColor);
+                    localStorage.setItem('coracaoSrc', coracaoSrc);
+                    localStorage.setItem('navColor', navColor)
+                    localStorage.setItem('shaColor', shaColor)
+                   
+                    
+                }
+        
+                function carregarCores() {
+
+                    const bgColor = localStorage.getItem('bgColor');
+                    const topoColor = localStorage.getItem('topoColor');
+                    const textoColor = localStorage.getItem('textoColor');    
+                    const coracaoSrc = localStorage.getItem('coracaoSrc');
+                    const navColor = localStorage.getItem('navColor');
+                    const shaColor = localStorage.getItem('shaColor');
+                    
+        
+                    if (bgColor && topoColor && textoColor && coracaoSrc && navColor && shaColor) {
+                    
+                        document.body.style.backgroundColor = bgColor;
+                        topo.style.backgroundColor = topoColor;
+                        topo.style.color = textoColor;
+                        coracao_ver.src = coracaoSrc;
+                        toponav.forEach(link => { link.style.color = navColor; }); 
+                        document.querySelector('.inferior').style.color= bgColor
+                        FshaColor(shaColor)
+                        
+                    }
+            }
+
+            
+           
+            
+            function mudar_cor1() {
+                //bgColor
+                document.body.style.backgroundColor =ver_cla
+                document.querySelector('.inferior').style.color= ver_cla
+
+                //topoColor
+                topo.style.backgroundColor = ver_bor;
+
+                //textoColor
+                topo.style.color = bran;
+
+                //coracaoSrc
+                coracao_ver.src= "imagens/coracao/branco.png"
+
+                //navColor
+                toponav.forEach(link =>{link.style.color = bran}) 
+                
+                //shaColor
+                FshaColor(ver_bor)
+                
+              
+              
+                
+                
+                
+               
+                salvarCores(ver_cla, ver_bor, bran ,"imagens/coracao/branco.png", bran, ver_bor);
+                
+     
+            
+            }
+
+            function mudar_cor2() {
+                document.body.style.backgroundColor = azul_cla
+                topo.style.backgroundColor = azul_bor
+                topo.style.color = bran;
+                coracao_ver.src= "imagens/coracao/branco.png"
+                toponav.forEach(link =>{link.style.color = bran})
+                document.querySelector('.inferior').style.color= azul_cla
+                FshaColor(azul_bor)
+
+                salvarCores(azul_cla, azul_bor, bran, "imagens/coracao/branco.png", bran, azul_bor);
+                
+        
+            }
+
+
+            function mudar_cor3(){
+
+                document.body.style.backgroundColor = pre
+                topo.style.backgroundColor = pre
+                topo.style.color = ver;
+                coracao_ver.src= "imagens/coracao/vermelho.png"
+                toponav.forEach(link =>{link.style.color = ver})
+                document.querySelector('.inferior').style.color= pre
+                FshaColor(ver)
+
+                salvarCores(pre, pre, ver, "imagens/coracao/vermelho.png", ver,ver);
+                
+          
+            }
+
+            function mudar_cor4(){
+
+                document.body.style.backgroundColor = pre
+                topo.style.backgroundColor = pre
+                topo.style.color = azul;
+                coracao_ver.src= "imagens/coracao/azul.png"
+                toponav.forEach(link =>{link.style.color = azul})
+                document.querySelector('.inferior').style.color = pre
+                FshaColor(azul)
+
+                salvarCores(pre, pre, azul, "imagens/coracao/azul.png", azul,azul);
+                
+          
+            }
+
+            function mudar_cor5(){
+
+                document.body.style.backgroundColor = pre
+                topo.style.backgroundColor = pre
+                topo.style.color = roxo;
+                coracao_ver.src= "imagens/coracao/roxo.png"
+                toponav.forEach(link =>{link.style.color = roxo})
+                document.querySelector('.inferior').style.color= pre
+                FshaColor(roxo)
+
+                salvarCores(pre, pre, roxo, "imagens/coracao/roxo.png", roxo,roxo);
+                
+          
+            }
+
+        
+        
+           
+        window.onload = carregarCores;
+
+    </script>
+    </div>
+    
+    <div class="texto">
+        <h1> Minhas Cartinhas dos nossos aniversarios!!!</h1>
+        <h2>(18/11/2024) 4º mês:</h2>
+        <h3> O quanto Eu te amo? Essa pergunta parece ser fácil de responder, porém como vou responder algo que nem palavras e nem números possam descrever! 
+            O amor é um sentimento que, quando não é correspondido, dói, e dói muito. Infelizmente, já senti essa dor, mas hoje eu tenho você, uma pessoa que me mostrou o real AMOR, uma pessoa que eu penso 25 horas do meu dia, que penso quando acordo e quando vou dormir (até nos sonhos, na verdade, kkkk). 
+            Meu amor, hoje completamos 4 meses,parece que passaram 2 anos, foram os melhores meses da minha vida, e teremos mais, muito mais, ate a morte!!! 
+            Quando estou ao seu lado, sinto o tempo passar lentamente, olho para você e meu coração dispara. Sou completamente apaixonado por você, você é o amor da minha vida, a razão do meu viver. Eu vou passar o resto da minha vida com você, disso eu tenho certeza. Farei de tudo e mais um pouco para ficarmos juntos. Eu te amo tanto, meu amor, mais tanto, nunca achei que amaria tanto uma pessoa quanto eu te amo.
+
+        </h3>
+
+        <h2>(18/12/2024) 5º mês:</h2>
+        <h3>...</h3>
+    </div>
+    
+        
+
+
+    <div class="inferior">
+        Eu te amo&lt;3
+        <button class="mudar_cor1" onclick="mudar_cor1()">
+            <img src="imagens/tema/vermelho_branco.png" alt="Imagem" width=25px>  
+        </button>
+        <button class="mudar_cor2" onclick="mudar_cor2()">
+            <img src="imagens/tema/azul_branco.png" alt="Imagem" width=25px>  
+        </button>
+
+        <button class="mudar_cor3" onclick="mudar_cor3()">
+            <img src="imagens/tema/vermelho_preto.png" alt="Imagem" width=25px>  
+        </button>
+    
+        <button class="mudar_cor4" onclick="mudar_cor4()">
+            <img src="imagens/tema/azul_preto.png" alt="Imagem" width=25px>  
+        </button>
+    
+        <button class="mudar_cor5" onclick="mudar_cor5()">
+            <img src="imagens/tema/roxo_preto.png" alt="Imagem" width=25px>  
+        </button>
+        
+    
+    </div>
+
+</body>
+
+
+
+
+</html>

@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Album</title>
+    <style>
+    body {
+        transition: background-color 0.5s;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        
+    }
+    .topo {
+        transition: background-color 0.5s;
+        color: #000000;
+        padding: 10;
+        text-align: center;
+    }
+
+    .topo h1, .topo h3, .topo nav a, .texto, .container h1 { 
+        transition: color 0.5s; 
+    }
+
+    .topo h1{
+        margin-top: -800;
+        padding-bottom: 10px;
+        
+        
+    }
+    .topo h3{
+        font-size: 16px;
+        text-align: left;
+        padding: 10px;
+        margin-left: 85px;
+        color: #000000;
+
+    }
+
+    .logo {
+        width: 100px;
+        margin-top: 40px;
+    }
+
+    .mudar_cor1, .mudar_cor2, .mudar_cor3, .mudar_cor4, .mudar_cor5 { 
+        display: block; 
+        margin-top: -30px; 
+        margin-left: 10px; 
+        cursor: pointer; 
+        border: none; 
+        background: none; 
+        color: #000000; 
+       
+    } 
+    
+
+    .mudar_cor1 { margin-top: -20px; } 
+    .mudar_cor2 { margin-left: 50px; }
+    .mudar_cor3 { margin-left: 90px; }
+    .mudar_cor4 { margin-left: 130px; }
+    .mudar_cor5 { margin-left: 170px; } 
+    
+
+    
+
+
+
+    .topo nav {
+
+        margin-top: -20px;
+        padding: 10px;
+    }
+
+    .topo nav a {
+
+        color: #000000;
+        text-align: center;
+        margin: 0 7px;
+        font-size: 20px;
+        text-decoration: none;
+    }
+
+    .topo2 {
+        
+        transition: background-color 0.5s;
+        background-color: #000000;
+        margin-top: 1px;
+        padding: 3px;
+    }
+
+    .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    .container h1{
+
+        font-size: 26px;
+        text-align: left;
+        padding-bottom: 600px;
+        margin-top: 240px;
+        margin-left: 85px;
+        color: #000
+
+    }
+    
+
+    .item {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        margin-bottom: 80px; /* Espaço entre os itens */
+    }
+    .foto {
+        width: 400px; /* Ajuste a largura conforme necessário */
+        border-radius: 20px; /* Define o raio da borda arredondada */
+        margin-left: 100px; /* Espaço à esquerda da imagem */
+        margin-right: 100px; /* Espaço à direita da imagem */
+        
+    }
+    .texto {
+        color: #000000ad;
+        width: 45%; /* Ajuste a largura conforme necessário */
+        margin: 0 20px; /* Espaço entre a imagem e o texto */
+    }
+  
+    .direita {
+        justify-content: flex-end; /* Alinha o item à direita */
+    }
+    .direita .foto {
+        margin-left: auto; /* Empurra a imagem para a borda direita */
+        box-shadow: 20px 20px 0px rgba(0, 0, 0, 0.5); 
+        border: 4px solid; 
+        border-color: #000000;
+    }
+    .esquerda {
+        justify-content: flex-start; /* Alinha o item à esquerda */
+    }
+    .esquerda .foto {
+        margin-right: auto; /* Empurra a imagem para a borda esquerda */
+        box-shadow: -20px -20px 0px rgba(0, 0, 0, 0.5); 
+        border: 4px solid; 
+        border: 4px solid; 
+        border-color: #000000;
+    }
+    .esquerda .texto {
+        text-align: right;
+        margin-right: 300px; /* Espaço adicional à direita do texto */
+    }
+    .direita .texto {
+        margin-left: 300px; /* Espaço adicional à esquerda do texto */
+        text-align: left;
+    }
+    .inferior {
+        
+        color: #000000;
+        transition: background-color 0.5s;
+        background-color: #000000;
+        text-align: center;
+        position: fixed;
+        padding: 10px;
+        width: 100%;
+        bottom: 0;
+
+}
+
+
+
+
+    </style>
+
+    <script>
+        //shaColor
+        function FshaColor (cor){
+                const color = document.querySelectorAll('.texto h1, .texto h2, .texto h3, .container h1, .texto');
+                const Bcolor = document.querySelectorAll('.topo2, .inferior');
+                const Sdire =  document.querySelectorAll('.direita .foto');
+                const Sesq = document.querySelectorAll('.esquerda .foto');
+
+                color.forEach(element => {element.style.color = cor;});
+                Bcolor.forEach(element=> {element.style.backgroundColor = cor})
+                Sdire.forEach(img => { img.style.boxShadow =  `15px 15px 0px ${cor}`; });
+                Sesq.forEach(img => { img.style.boxShadow =  `-15px -15px 0px ${cor}`; });
+
+
+                
+
+                
+            }    
+       function carregarCores() {
+               const bgColor = localStorage.getItem('bgColor') || '#ffc5c5';
+               const topoColor = localStorage.getItem('topoColor') || '#c62727'
+               const textoColor = localStorage.getItem('textoColor') || '#ffffff';
+               const coracaoSrc = localStorage.getItem('coracaoSrc') || 'imagens/coracao/branco.png';
+               const navColor = localStorage.getItem('navColor') || '#ffffff';
+               const shaColor = localStorage.getItem('shaColor') || '#c62727';
+   
+               document.body.style.backgroundColor = bgColor;
+               document.querySelector('.topo').style.backgroundColor = topoColor;
+               document.querySelector('.topo').style.color = textoColor;
+               document.querySelector('.topo h3').style.color = textoColor;
+               document.getElementById('coracao').src = coracaoSrc;
+               document.querySelectorAll('.topo nav a').forEach(link => {link.style.color = navColor;});
+               document.querySelector('.inferior').style.color= bgColor
+               FshaColor(shaColor)
+               
+           }
+           carregarCores();
+     </script>
+
+
+    </head>
+
+    <body>
+    
+    <div class="topo">
+        <img id= "coracao" src= "imagens/coracao/branco.png" alt= "logo" class= "logo">
+        <h1>EU TE AMO</h1>
+        <h3></h3>
+        <nav>
+            <a href="index.html" target="_self">I love you</a>
+            <a href="album.html" target="_self">Album</a>
+        </nav>
+        <div class="topo2"></div>
+
+    <script>
+
+        const ver = ["#ff3131"];
+        const ver_cla = ["#ffc5c5"]
+        const bran = ["#ffffff"]
+        const azul = ["#0900ad"]
+        const azul_cla = ["#93b1ff"]
+        const pre = ["#000"]
+        const roxo = ["#a016a5"]
+        const ver_bor = ["#c62727"]
+        const azul_bor = ["#332e9b"]
+
+
+        const topo = document.querySelector('.topo');
+       
+        const toponav = document.querySelectorAll('.topo nav a')
+        const texto = document.querySelectorAll('.texto')
+        const coracao_ver = document.getElementById('coracao');
+      
+        
+        function salvarCores(bgColor, topoColor, textoColor, coracaoSrc, navColor, shaColor) {
+                    localStorage.setItem('bgColor', bgColor);
+                    localStorage.setItem('topoColor', topoColor);
+                    localStorage.setItem('textoColor', textoColor);
+                    localStorage.setItem('coracaoSrc', coracaoSrc);
+                    localStorage.setItem('navColor', navColor);
+                    localStorage.setItem('shaColor', shaColor);
+                    
+                }
+        
+                function carregarCores() {
+                    const bgColor = localStorage.getItem('bgColor');
+                    const topoColor = localStorage.getItem('topoColor');
+                    const textoColor = localStorage.getItem('textoColor');    
+                    const coracaoSrc = localStorage.getItem('coracaoSrc');
+                    const navColor = localStorage.getItem('navColor');
+                    const shaColor = localStorage.getItem('shaColor');
+                    
+                    
+        
+                    if (bgColor && topoColor && textoColor && coracaoSrc && navColor && shaColor) {
+                        document.body.style.backgroundColor = bgColor;
+                        topo.style.backgroundColor = topoColor;
+                        topo.style.color = textoColor;
+                        coracao_ver.src = coracaoSrc;
+                        toponav.forEach(link => {link.style.color = navColor; }); 
+                        document.querySelector('.inferior').style.color= bgColor
+                        FshaColor(shaColor)
+                    }
+            }
+
+        
+            function mudar_cor1() {
+                document.body.style.backgroundColor =ver_cla
+                topo.style.backgroundColor = ver_bor;
+                topo.style.color = bran;
+                coracao_ver.src= "imagens/coracao/branco.png"
+                toponav.forEach(link =>{link.style.color = bran})    
+                document.querySelector('.inferior').style.color= ver_cla
+                FshaColor(ver_bor)
+
+
+                
+                salvarCores(ver_cla, ver_bor, bran , "imagens/coracao/branco.png", bran, ver_bor);
+                
+     
+            
+            }   
+
+            function mudar_cor2() {
+                document.body.style.backgroundColor =azul_cla
+                topo.style.backgroundColor = azul_bor;
+                topo.style.color = bran;
+                coracao_ver.src= "imagens/coracao/branco.png"
+                toponav.forEach(link =>{link.style.color = bran})
+                document.querySelector('.inferior').style.color= azul_cla
+                FshaColor(azul_bor)
+
+
+                salvarCores(azul_cla, azul_bor, bran, "imagens/coracao/branco.png", bran, azul_bor);
+                
+        
+            }
+
+
+            function mudar_cor3(){
+                document.body.style.backgroundColor = pre
+                topo.style.backgroundColor = pre
+                topo.style.color = ver;
+                coracao_ver.src= "imagens/coracao/vermelho.png"
+                toponav.forEach(link =>{link.style.color = ver;})
+                document.querySelector('.inferior').style.color= pre
+                FshaColor(ver)
+
+                salvarCores(pre, pre, ver, "imagens/coracao/vermelho.png", ver,ver);
+                
+          
+            }
+
+            function mudar_cor4(){
+                document.body.style.backgroundColor = pre
+                topo.style.backgroundColor = pre
+                topo.style.color = azul;
+                coracao_ver.src= "imagens/coracao/azul.png"
+                toponav.forEach(link =>{link.style.color = azul;})
+                document.querySelector('.inferior').style.color= pre
+                FshaColor(azul)
+
+                salvarCores(pre, pre, azul, "imagens/coracao/azul.png", azul,azul);
+                
+          
+            }
+
+            function mudar_cor5(){
+                document.body.style.backgroundColor = pre
+                topo.style.backgroundColor = pre
+                topo.style.color = roxo;
+                coracao_ver.src= "imagens/coracao/roxo.png"
+                toponav.forEach(link =>{link.style.color = roxo})
+                document.querySelector('.inferior').style.color= pre
+                FshaColor(roxo)
+                salvarCores(pre, pre, roxo, "imagens/coracao/roxo.png", roxo,roxo)
+                
+          
+            }
+            window.onload = carregarCores;
+
+    </script>
+    
+        
+    </div>
+
+    <div class="container">
+        <h1>Essas são as nossas memorias...</h1>
+        <div class="item direita">
+            <div class="texto"><h2>A nossa viajem na praia foi uma das melhores coisas que fizemos..</h2></div>
+            <img src="imagens/album/foto 1.jpg" alt="Imagem 1" class="foto">
+        </div>
+        <div class="item esquerda">
+            <img src="imagens/album/foto 2.jpg" alt="Imagem 2" class="foto">
+            <div class="texto"><h2>A cada vez que te beijo, meu coracao pega fogo!!</h2></div>
+        </div>
+        <div class="item direita">
+            <div class="texto"><h2>Qundo fomos ao Bario e tiramos aquela foto na cabine fotografica!!</h2></div>
+            <img src="imagens/album/foto 3.jpg" alt="Imagem 3" class="foto">
+        </div>
+        <div class="item esquerda">
+            <img src="imagens/album/foto 4.jpg" alt="Imagem 4" class="foto">
+            <div class="texto"><h2>Esse Hallowen foi incrivel!!</div>
+        </div>
+        <div class="item direita">
+            <div class="texto"><h2>Quando almoçamos juntos e ficamos assistindo filme</h2></div>
+            <img src="imagens/album/foto 5.jpg" alt="Imagem 3" class="foto">
+        </div>
+
+        <div class="item esquerda">
+            <img src="imagens/album/foto 6.jpg" alt="Imagem 4" class="foto">
+            <div class="texto"><h2>Voce jantou com a minha familia!!</h2></div>
+        </div>
+       
+        <div class="item direita">
+            <div class="texto"><h2>De rosa vc fica tao bonita!!!</h2></div>
+            <img src="imagens/album/foto 7.jpg" alt="Imagem 3" class="foto">
+        </div>
+
+        <div class="item esquerda">
+            <img src="imagens/album/foto 8.jpg" alt="Imagem 4" class="foto">
+            <div class="texto"><h2>Quando fomos fazer uma "reuniao" na casa do Juan kkkkkkk</h2></div>
+        </div>
+        
+        <div class="item direita">
+            <div class="texto"><h2>De rosa vc fica tao bonita!!!</h2></div>
+            <img src="imagens/album/foto 9.jpg" alt="Imagem 3" class="foto">
+        </div>
+        
+        <div class="item esquerda">
+            <img src="imagens/album/foto 10.jpg" alt="Imagem 4" class="foto">
+            <div class="texto"><h2>Quando fomos fazer uma "reuniao" na casa do Juan kkkkkkk</h2></div>
+        </div>
+        
+        <div class="item direita">
+            <div class="texto"><h2>De rosa vc fica tao bonita!!!</h2></div>
+            <img src="imagens/album/foto 11.jpg" alt="Imagem 3" class="foto">
+        </div>
+        
+        <div class="item esquerda">
+            <img src="imagens/album/foto 12.jpg" alt="Imagem 4" class="foto">
+            <div class="texto"><h2>Quando fomos fazer uma "reuniao" na casa do Juan kkkkkkk</h2></div>
+        </div>
+
+        <div class="item direita">
+            <div class="texto"><h2>De rosa vc fica tao bonita!!!</h2></div>
+            <img src="imagens/album/foto 13.jpg" alt="Imagem 3" class="foto">
+        </div>
+        
+        <div class="item esquerda">
+            <img src="imagens/album/foto 14.jpg" alt="Imagem 4" class="foto">
+            <div class="texto"><h2>Quando fomos fazer uma "reuniao" na casa do Juan kkkkkkk</h2></div>
+        </div>
+
+        <div class="item direita">
+            <div class="texto"><h2>De rosa vc fica tao bonita!!!</h2></div>
+            <img src="imagens/album/foto 15.jpg" alt="Imagem 3" class="foto">
+        </div>
+            
+        <div class="item esquerda">
+            <img src="imagens/album/foto 16.jpg" alt="Imagem 4" class="foto">
+            <div class="texto"><h2>Quando fomos fazer uma "reuniao" na casa do Juan kkkkkkk</h2></div>
+        </div>
+
+        <div class="item direita">
+            <div class="texto"><h2>De rosa vc fica tao bonita!!!</h2></div>
+            <img src="imagens/album/foto 17.jpg" alt="Imagem 3" class="foto">
+        </div>
+        
+        <div class="item esquerda">
+            <img src="imagens/album/foto 18.jpg" alt="Imagem 4" class="foto">
+            <div class="texto"><h2>Quando fomos fazer uma "reuniao" na casa do Juan kkkkkkk</h2></div>
+        </div>
+        
+        
+        <h1>proximas fotos...</h1>
+    </div>
+   
+    <div class="inferior">
+        Eu te amo&lt;3
+        <button class="mudar_cor1" onclick="mudar_cor1()">
+            <img src="imagens/tema/vermelho_branco.png" alt="Imagem" width=25px>  
+        </button>
+        <button class="mudar_cor2" onclick="mudar_cor2()">
+            <img src="imagens/tema/azul_branco.png" alt="Imagem" width=25px>  
+        </button>
+
+        <button class="mudar_cor3" onclick="mudar_cor3()">
+            <img src="imagens/tema/vermelho_preto.png" alt="Imagem" width=25px>  
+        </button>
+    
+        <button class="mudar_cor4" onclick="mudar_cor4()">
+            <img src="imagens/tema/azul_preto.png" alt="Imagem" width=25px>  
+        </button>
+    
+        <button class="mudar_cor5" onclick="mudar_cor5()">
+            <img src="imagens/tema/roxo_preto.png" alt="Imagem" width=25px>  
+        </button>
+        
+    
+    </div>
+
+    <body>
+
+    
+</html>
