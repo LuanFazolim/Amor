@@ -106,19 +106,20 @@
         display: flex;
         align-items: center;
         width: 100%;
-        margin-bottom: 80px; /* Espaço entre os itens */
+        margin-bottom: 4.16%; /* Espaço entre os itens */
     }
     .foto {
-        width: 400px; /* Ajuste a largura conforme necessário */
+        width: 27%; /* Ajuste a largura conforme necessário */
         border-radius: 20px; /* Define o raio da borda arredondada */
-        margin-left: 100px; /* Espaço à esquerda da imagem */
-        margin-right: 100px; /* Espaço à direita da imagem */
+        margin-left: 5.2%; /* Espaço à esquerda da imagem */
+        margin-right: 5.2%; /* Espaço à direita da imagem */
         
     }
     .texto {
         color: #c62727;
-        width: 45%; /* Ajuste a largura conforme necessário */
-        margin: 0 20px; /* Espaço entre a imagem e o texto */
+        width: 100%; /* Ajuste a largura conforme necessário */
+        margin: 1.041%; /* Espaço entre a imagem e o texto */
+        font-size: 100%;
     }
   
     .direita {
@@ -126,7 +127,7 @@
     }
     .direita .foto {
         margin-left: auto; /* Empurra a imagem para a borda direita */
-        box-shadow: 20px 20px 0px #c62727; 
+        box-shadow: -20px -20px 0px #c62727; 
         border: 4px solid; 
         border-color: #000000;
     }
@@ -141,10 +142,10 @@
     }
     .esquerda .texto {
         text-align: right;
-        margin-right: 300px; /* Espaço adicional à direita do texto */
+        margin-right: 15.625%; /* Espaço adicional à direita do texto */
     }
     .direita .texto {
-        margin-left: 300px; /* Espaço adicional à esquerda do texto */
+        margin-left: 15.625%; /* Espaço adicional à esquerda do texto */
         text-align: left;
     }
     .inferior {
@@ -154,7 +155,7 @@
         background-color:  #c62727;
         text-align: center;
         position: fixed;
-        padding: 10px;
+        padding: 0.52%;
         width: 100%;
         bottom: 0;
 
@@ -175,8 +176,8 @@
 
                 color.forEach(element => {element.style.color = cor;});
                 Bcolor.forEach(element=> {element.style.backgroundColor = cor})
-                Sdire.forEach(img => { img.style.boxShadow =  `15px 15px 0px ${cor}`; });
-                Sesq.forEach(img => { img.style.boxShadow =  `-15px -15px 0px ${cor}`; });
+                Sdire.forEach(img => { img.style.boxShadow =  `20px 20px 0px ${cor}`; });
+                Sesq.forEach(img => { img.style.boxShadow =  `-20px -20px 0px ${cor}`; });
 
 
                 
