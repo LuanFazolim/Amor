@@ -12,6 +12,9 @@
         margin: 0;
         padding: 0;
         background-color: #ffc5c5;
+        justify-content: center;
+        align-items: center;
+        
         
     }
     .topo {
@@ -82,12 +85,12 @@
     }
     .inferior {
     
-        color: #ffc5c5 ;
+        color: #ffc5c5;
         transition: background-color 0.5s;
-        background-color: #c62727;
+        background-color:  #c62727;
         text-align: center;
         position: fixed;
-        padding: 10px;
+        padding: 0.52%;
         width: 100%;
         bottom: 0;
 
@@ -105,23 +108,43 @@
         text-align: center;
         padding: 90px;
         margin-bottom: 400px;
-        
+        font-family: 'Verdana', sans-serif;
+        text-shadow: 1px 2px 2px #6e5b5b;
+       
+       
         
     }
     .texto h2{
         margin-left: 40px;
         color: #c62727;
         margin-bottom: 90px;
-        
+        text-align: justify; /* Alinha o texto como uma carta */
+        font-family: 'Georgia', serif;
     }
     .texto h3{
+        
         color: #c62727;
-        margin-left: 200px;
+        margin-left: 13%;
         max-width: 77%;
         margin-bottom: 500px;
+        text-align: justify; /* Alinha o texto como uma carta */
+        font-family: 'Georgia', serif;
 
     }
 
+    .carta{
+      transition: background-color 0.5s;
+      margin-left:calc(80%/8) ;
+      width: 80%; /* Largura da "carta" */
+      height: 20%; /* Altura da "carta" */
+      background: #ffc5c5; /* Fundo branco para o papel */
+      box-shadow: 0 40px 10px rgba(0, 0, 0, 0.2); /* Sombra para dar profundidade */
+      border-radius: 10px; /* Bordas arredondadas */
+      padding: 40px;
+      box-sizing: border-box; /* Inclui padding no tamanho total */
+      line-height: 1.8; /* Espaçamento entre as linhas */
+      border: 2px solid #c62727; /* Simula bordas de papel */
+    }
    
 
 
@@ -140,6 +163,8 @@
                 Sdire.forEach(img => { img.style.boxShadow =  `15px 15px 0px ${cor}`; });
                 Sesq.forEach(img => { img.style.boxShadow =  `-15px -15px 0px ${cor}`; });
 
+                document.querySelector('.carta').style.borderColor = cor
+                
 
                 
 
@@ -159,6 +184,7 @@
                document.getElementById('coracao').src = coracaoSrc;
                document.querySelectorAll('.topo nav a').forEach(link => {link.style.color = navColor;});
                document.querySelector('.inferior').style.color= bgColor
+               document.querySelector('.carta').style.backgroundColor = bgColor
                FshaColor(shaColor)
            }
            carregarCores();
@@ -228,6 +254,8 @@
                         coracao_ver.src = coracaoSrc;
                         toponav.forEach(link => { link.style.color = navColor; }); 
                         document.querySelector('.inferior').style.color= bgColor
+                        document.querySelector('.carta').style.backgroundColor = bgColor
+                        
                         FshaColor(shaColor)
                         
                     }
@@ -240,6 +268,7 @@
                 //bgColor
                 document.body.style.backgroundColor =ver_cla
                 document.querySelector('.inferior').style.color= ver_cla
+                document.querySelector('.carta').style.backgroundColor = ver_cla
 
                 //topoColor
                 topo.style.backgroundColor = ver_bor;
@@ -271,6 +300,7 @@
             function mudar_cor2() {
                 document.body.style.backgroundColor = azul_cla
                 topo.style.backgroundColor = azul_bor
+                document.querySelector('.carta').style.backgroundColor = azul_cla
                 topo.style.color = bran;
                 coracao_ver.src= "imagens/coracao/branco.png"
                 toponav.forEach(link =>{link.style.color = bran})
@@ -287,6 +317,7 @@
 
                 document.body.style.backgroundColor = pre
                 topo.style.backgroundColor = pre
+                document.querySelector('.carta').style.backgroundColor = pre
                 topo.style.color = ver;
                 coracao_ver.src= "imagens/coracao/vermelho.png"
                 toponav.forEach(link =>{link.style.color = ver})
@@ -302,6 +333,7 @@
 
                 document.body.style.backgroundColor = pre
                 topo.style.backgroundColor = pre
+                document.querySelector('.carta').style.backgroundColor = pre
                 topo.style.color = azul;
                 coracao_ver.src= "imagens/coracao/azul.png"
                 toponav.forEach(link =>{link.style.color = azul})
@@ -317,6 +349,7 @@
 
                 document.body.style.backgroundColor = pre
                 topo.style.backgroundColor = pre
+                document.querySelector('.carta').style.backgroundColor = pre
                 topo.style.color = roxo;
                 coracao_ver.src= "imagens/coracao/roxo.png"
                 toponav.forEach(link =>{link.style.color = roxo})
@@ -338,17 +371,22 @@
     
     <div class="texto">
         <h1> Minhas Cartinhas dos nossos aniversarios!!!</h1>
-        <h2>(18/11/2024) 4º mês:</h2>
-        <h3> O quanto Eu te amo? Essa pergunta parece ser fácil de responder, porém como vou responder algo que nem palavras e nem números possam descrever! 
-            O amor é um sentimento que, quando não é correspondido, dói, e dói muito. Infelizmente, já senti essa dor, mas hoje eu tenho você, uma pessoa que me mostrou o real AMOR, uma pessoa que eu penso 25 horas do meu dia, que penso quando acordo e quando vou dormir (até nos sonhos, na verdade, kkkk). 
-            Meu amor, hoje completamos 4 meses,parece que passaram 2 anos, foram os melhores meses da minha vida, e teremos mais, muito mais, ate a morte!!! 
-            Quando estou ao seu lado, sinto o tempo passar lentamente, olho para você e meu coração dispara. Sou completamente apaixonado por você, você é o amor da minha vida, a razão do meu viver. Eu vou passar o resto da minha vida com você, disso eu tenho certeza. Farei de tudo e mais um pouco para ficarmos juntos. Eu te amo tanto, meu amor, mais tanto, nunca achei que amaria tanto uma pessoa quanto eu te amo.
+        <div class="carta">
+            
+            <h2>- (18/11/2024) 4º mês:</h2>
+            <h3> O quanto Eu te amo? Essa pergunta parece ser fácil de responder, porém como vou responder algo que nem palavras e nem números possam descrever! 
+                O amor é um sentimento que, quando não é correspondido, dói, e dói muito. Infelizmente, já senti essa dor, mas hoje eu tenho você, uma pessoa que me mostrou o real AMOR, uma pessoa que eu penso 25 horas do meu dia, que penso quando acordo e quando vou dormir (até nos sonhos, na verdade, kkkk). 
+                Meu amor, hoje completamos 4 meses,parece que passaram 2 anos, foram os melhores meses da minha vida, e teremos mais, muito mais, ate a morte!!! 
+                Quando estou ao seu lado, sinto o tempo passar lentamente, olho para você e meu coração dispara. Sou completamente apaixonado por você, você é o amor da minha vida, a razão do meu viver. Eu vou passar o resto da minha vida com você, disso eu tenho certeza. Farei de tudo e mais um pouco para ficarmos juntos. Eu te amo tanto, meu amor, mais tanto, nunca achei que amaria tanto uma pessoa quanto eu te amo.
 
-        </h3>
+            </h3>
 
-        <h2>(18/12/2024) 5º mês:</h2>
+            <h2>- (18/12/2024) 5º mês:</h2>
         <h3>...</h3>
+        <h3>Assinado <br><br>Seu namorado Luan</h3>
+        </div>
     </div>
+
     
         
 
