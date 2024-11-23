@@ -7,14 +7,17 @@
     <title>Album</title>
     <style>
     body {
-        transition: background-color 0.5s;
+        transition: background-color 0.2s;
         font-family: Arial, sans-serif;
         margin: 0;
         padding: 0;
         background-color: #ffc5c5;
+        justify-content: center;
+        align-items: center;
     }
+
     .topo {
-        transition: background-color 0.5s;
+        transition: background-color 0.2s;
         color: #ffffff;
         padding: 10;
         text-align: center;
@@ -22,7 +25,7 @@
     }
 
     .topo h1, .topo h3, .topo nav a, .texto, .container h1 { 
-        transition: color 0.5s; 
+        transition: color 0.2s; 
     }
 
     .topo h1{
@@ -79,7 +82,7 @@
 
     .topo2 {
         
-        transition: background-color 0.5s;
+        transition: background-color 0.2s;
         background-color: #c62727;
         margin-top: 1px;
         padding: 3px;
@@ -151,7 +154,7 @@
     .inferior {
         
         color: #ffc5c5;
-        transition: background-color 0.5s;
+        transition: background-color 0.2s;
         background-color:  #c62727;
         text-align: center;
         position: fixed;
@@ -176,40 +179,39 @@
 
                 color.forEach(element => {element.style.color = cor;});
                 Bcolor.forEach(element=> {element.style.backgroundColor = cor})
-                Sdire.forEach(img => { img.style.boxShadow =  `20px 20px 0px ${cor}`; });
-                Sesq.forEach(img => { img.style.boxShadow =  `-20px -20px 0px ${cor}`; });
+                Sdire.forEach(img => { img.style.boxShadow =  `15px 15px 0px ${cor}`; });
+                Sesq.forEach(img => { img.style.boxShadow =  `-15px -15px 0px ${cor}`; });
 
-                document.querySelector('.carta').style.borderColor = cor
+                
   
 
                 
             }    
-       function carregarCores() {
-               const bgColor = localStorage.getItem('bgColor') || '#ffc5c5';
-               const topoColor = localStorage.getItem('topoColor') || '#c62727'
-               const textoColor = localStorage.getItem('textoColor') || '#ffffff';
-               const coracaoSrc = localStorage.getItem('coracaoSrc') || 'imagens/coracao/branco.png';
-               const navColor = localStorage.getItem('navColor') || '#ffffff';
-               const shaColor = localStorage.getItem('shaColor') || '#c62727';
-   
-               document.body.style.backgroundColor = bgColor;
-               document.querySelector('.topo').style.backgroundColor = topoColor;
-               document.querySelector('.topo').style.color = textoColor;
-               document.querySelector('.topo h3').style.color = textoColor;
-               document.getElementById('coracao').src = coracaoSrc;
-               document.querySelectorAll('.topo nav a').forEach(link => {link.style.color = navColor;});
-               document.querySelector('.inferior').style.color= bgColor
-               document.querySelector('.carta').style.backgroundColor = bgColor
-               FshaColor(shaColor)
-               
-           }
+        function carregarCores() {
+                const bgColor = localStorage.getItem('bgColor') || '#ffc5c5';
+                const topoColor = localStorage.getItem('topoColor') || '#c62727';
+                const textoColor = localStorage.getItem('textoColor') || '#ffffff';
+                const coracaoSrc = localStorage.getItem('coracaoSrc') || 'imagens/coracao/branco.png';
+                const navColor = localStorage.getItem('navColor') || '#ffffff';
+                const shaColor = localStorage.getItem('shaColor') || '#c62727';
+
+                // Aplica as cores ao carregar a página
+                document.body.style.backgroundColor = bgColor;
+                document.querySelector('.topo').style.backgroundColor = topoColor;
+                document.querySelector('.topo').style.color = textoColor;
+                document.getElementById('coracao').src = coracaoSrc;
+                document.querySelectorAll('.topo nav a').forEach(link => { link.style.color = navColor; });
+                document.querySelector('.inferior').style.color = bgColor;
+                FshaColor(shaColor);
+                }
+
            carregarCores();
      </script>
 
 
-    </head>
+</head>
 
-    <body>
+<body>
     
     <div class="topo">
         <img id= "coracao" src= "imagens/coracao/branco.png" alt= "logo" class= "logo">
@@ -235,13 +237,13 @@
 
 
         const topo = document.querySelector('.topo');
-       
         const toponav = document.querySelectorAll('.topo nav a')
         const texto = document.querySelectorAll('.texto')
         const coracao_ver = document.getElementById('coracao');
       
         
         function salvarCores(bgColor, topoColor, textoColor, coracaoSrc, navColor, shaColor) {
+
                     localStorage.setItem('bgColor', bgColor);
                     localStorage.setItem('topoColor', topoColor);
                     localStorage.setItem('textoColor', textoColor);
@@ -270,7 +272,7 @@
                         document.querySelector('.inferior').style.color= bgColor
                         FshaColor(shaColor)
                     }
-            }
+                }   
 
         
             function mudar_cor1() {
