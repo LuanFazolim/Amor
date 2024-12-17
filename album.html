@@ -93,13 +93,12 @@
             flex-direction: column;
             align-items: center;
         }
-    .container h1{
+    .carta h1{
 
-        font-size: 26px;
-        text-align: left;
-        padding-bottom: 600px;
-        margin-top: 240px;
-        margin-left: 85px;
+        font-size: 3vw;
+        text-align: center;
+        padding-bottom: 30vw;
+       
         color: #c62727
 
     }
@@ -121,8 +120,8 @@
     .texto {
         color: #c62727;
         width: 100%; /* Ajuste a largura conforme necessário */
-        margin: 1.041%; /* Espaço entre a imagem e o texto */
-        font-size: 100%;
+        margin: 1.041vw; /* Espaço entre a imagem e o texto */
+        font-size: 1.05vw;
     }
   
     .direita {
@@ -130,9 +129,11 @@
     }
     .direita .foto {
         margin-left: auto; /* Empurra a imagem para a borda direita */
-        box-shadow: -20px -20px 0px #c62727; 
+        box-shadow: 1vw 1vw 0px #c62727; 
         border: 4px solid; 
         border-color: #000000;
+        width: 17vw;
+        
     }
     .esquerda {
         justify-content: flex-start; /* Alinha o item à esquerda */
@@ -142,14 +143,23 @@
         box-shadow: -20px -20px 0px #c62727; 
         border: 4px solid; 
         border-color: #000000;
+        width: 17vw;
     }
     .esquerda .texto {
-        text-align: right;
-        margin-right: 15.625%; /* Espaço adicional à direita do texto */
+        text-align: center;
+        padding: 9vw;
+        border-bottom: 1px solid #000;
+        padding-bottom: 2px;
+        margin-left: -1px;
+        margin-right: 60px;
     }
     .direita .texto {
-        margin-left: 15.625%; /* Espaço adicional à esquerda do texto */
-        text-align: left;
+        text-align: center;
+        padding: 12vw;
+        border-bottom: 1px solid #000;
+        padding-bottom: 2px;
+        margin-right: -1px;
+        margin-left: 60px;
     }
     .inferior {
         
@@ -163,7 +173,39 @@
         bottom: 0;
 
 }
+.carta_d{
+    
+    padding: 7%;
+    margin-left: 8vw;
+    box-shadow: -1vw 1vw 10px rgba(0, 0, 0, 0.2); /* Sombra para dar profundidade */
+    
+}
+.carta_e{
+   margin-left: -2.5vw;
+   padding-top: 5% ;
+   padding-left: 20%;
+   box-shadow: 1vw 1vw 10px rgba(0, 0, 0, 0.2); /* Sombra para dar profundidade */
+   
+}
+.carta{
+    padding-top: 4vw;
+    
+}
 
+.carta, .carta_d, .carta_e{
+      transition: background-color 0.2s;
+      margin-bottom: 20%;
+      margin-top: 20%;
+      width: 94%; /* Largura da "carta" */
+      height: 20%; /* Altura da "carta" */  
+      background-color: #ffc5c5; /* Fundo branco para o papel */
+      border-radius: 10px; /* Bordas arredondadas */
+      box-sizing: border-box; /* Inclui padding no tamanho total */
+      line-height: 1.8; /* Espaçamento entre as linhas */
+      border: 2px solid #c62727; /* Simula bordas de papel */
+    }
+    
+    
 
 
 
@@ -176,17 +218,24 @@
                 const Bcolor = document.querySelectorAll('.topo2, .inferior');
                 const Sdire =  document.querySelectorAll('.direita .foto');
                 const Sesq = document.querySelectorAll('.esquerda .foto');
-
+                const BORcolor= document.querySelectorAll('.carta, .carta_d, .carta_e, .direita .texto, .esquerda .texto')
                 color.forEach(element => {element.style.color = cor;});
                 Bcolor.forEach(element=> {element.style.backgroundColor = cor})
-                Sdire.forEach(img => { img.style.boxShadow =  `15px 15px 0px ${cor}`; });
-                Sesq.forEach(img => { img.style.boxShadow =  `-15px -15px 0px ${cor}`; });
+                Sdire.forEach(img => { img.style.boxShadow =  `1vw 1vw 0px ${cor}`; });
+                Sesq.forEach(img => { img.style.boxShadow =  `-1vw -1vw 0px ${cor}`; });
 
-                
+                BORcolor.forEach(element => {element.style.borderColor = cor;})
   
 
                 
             }    
+        function FbgColor (cor){
+            const Bgcolor = document.querySelectorAll(".carta, .carta_d, .carta_e")
+            Bgcolor.forEach(element => {element.style.backgroundColor = cor})
+            document.body.style.backgroundColor = cor;
+        }
+
+
         function carregarCores() {
                 const bgColor = localStorage.getItem('bgColor') || '#ffc5c5';
                 const topoColor = localStorage.getItem('topoColor') || '#c62727';
@@ -196,13 +245,15 @@
                 const shaColor = localStorage.getItem('shaColor') || '#c62727';
 
                 // Aplica as cores ao carregar a página
-                document.body.style.backgroundColor = bgColor;
+                
                 document.querySelector('.topo').style.backgroundColor = topoColor;
                 document.querySelector('.topo').style.color = textoColor;
                 document.getElementById('coracao').src = coracaoSrc;
                 document.querySelectorAll('.topo nav a').forEach(link => { link.style.color = navColor; });
                 document.querySelector('.inferior').style.color = bgColor;
+                document.querySelector('.carta')
                 FshaColor(shaColor);
+                FbgColor(bgColor)
                 }
 
            carregarCores();
@@ -271,18 +322,20 @@
                         toponav.forEach(link => {link.style.color = navColor; }); 
                         document.querySelector('.inferior').style.color= bgColor
                         FshaColor(shaColor)
+                        FbgColor(bgColor)
                     }
                 }   
 
         
             function mudar_cor1() {
-                document.body.style.backgroundColor =ver_cla
+                
                 topo.style.backgroundColor = ver_bor;
                 topo.style.color = bran;
                 coracao_ver.src= "imagens/coracao/branco.png"
                 toponav.forEach(link =>{link.style.color = bran})    
                 document.querySelector('.inferior').style.color= ver_cla
                 FshaColor(ver_bor)
+                FbgColor(ver_cla)
 
 
                 
@@ -293,14 +346,14 @@
             }   
 
             function mudar_cor2() {
-                document.body.style.backgroundColor =azul_cla
+               
                 topo.style.backgroundColor = azul_bor;
                 topo.style.color = bran;
                 coracao_ver.src= "imagens/coracao/branco.png"
                 toponav.forEach(link =>{link.style.color = bran})
                 document.querySelector('.inferior').style.color= azul_cla
                 FshaColor(azul_bor)
-
+                FbgColor(azul_cla)
 
                 salvarCores(azul_cla, azul_bor, bran, "imagens/coracao/branco.png", bran, azul_bor);
                 
@@ -309,13 +362,14 @@
 
 
             function mudar_cor3(){
-                document.body.style.backgroundColor = pre
+                
                 topo.style.backgroundColor = pre
                 topo.style.color = ver;
                 coracao_ver.src= "imagens/coracao/vermelho.png"
                 toponav.forEach(link =>{link.style.color = ver;})
                 document.querySelector('.inferior').style.color= pre
                 FshaColor(ver)
+                FbgColor(pre)
 
                 salvarCores(pre, pre, ver, "imagens/coracao/vermelho.png", ver,ver);
                 
@@ -323,27 +377,29 @@
             }
 
             function mudar_cor4(){
-                document.body.style.backgroundColor = pre
+               
                 topo.style.backgroundColor = pre
                 topo.style.color = azul;
                 coracao_ver.src= "imagens/coracao/azul.png"
                 toponav.forEach(link =>{link.style.color = azul;})
                 document.querySelector('.inferior').style.color= pre
                 FshaColor(azul)
-
+                FbgColor(pre)
                 salvarCores(pre, pre, azul, "imagens/coracao/azul.png", azul,azul);
                 
           
             }
 
             function mudar_cor5(){
-                document.body.style.backgroundColor = pre
+              
                 topo.style.backgroundColor = pre
                 topo.style.color = roxo;
                 coracao_ver.src= "imagens/coracao/roxo.png"
                 toponav.forEach(link =>{link.style.color = roxo})
                 document.querySelector('.inferior').style.color= pre
                 FshaColor(roxo)
+                FbgColor(pre)
+
                 salvarCores(pre, pre, roxo, "imagens/coracao/roxo.png", roxo,roxo)
                 
           
@@ -356,95 +412,206 @@
     </div>
 
     <div class="container">
-        <h1>Essas são as nossas memorias...</h1>
-        <div class="item direita">
-            <div class="texto"><h2>Nossa primeira foto, quando estavavamos com a Ana na garagem!!</h2></div>
-            <img src="imagens/album/foto 1.jpg" alt="Imagem 1" class="foto">
-        </div>
-        <div class="item esquerda">
-            <img src="imagens/album/foto 2.jpg" alt="Imagem 2" class="foto">
-            <div class="texto"><h2>Essa foto você está tao linda com esse filtro!!😍</h2></div>
-        </div>
-        <div class="item direita">
-            <div class="texto"><h2>Nosso primeiro story, logo que voltamos da liberdade. Completamos 1 mês nesse dia!!</h2></div>
-            <img src="imagens/album/foto 3.jpg" alt="Imagem 3" class="foto">
-        </div>
-        <div class="item esquerda">
-            <img src="imagens/album/foto 4.jpg" alt="Imagem 4" class="foto">
-            <div class="texto"><h2>Na casa do Juan, quando fomos para a "reuniao" do RH kkkkkk</div>
-        </div>
-        <div class="item direita">
-            <div class="texto"><h2> O dia que fomos no Bario, tiramos aquela foto na Cabine Fotográfica!!</h2></div>
-            <img src="imagens/album/foto 5.jpg" alt="Imagem 3" class="foto">
-        </div>
-
-        <div class="item esquerda">
-            <img src="imagens/album/foto 6.jpg" alt="Imagem 4" class="foto">
-            <div class="texto"><h2>Esse video de eu comendo um dogão kkkkk</h2></div>
-        </div>
-       
-        <div class="item direita">
-            <div class="texto"><h2>É simplismente o fundo de tela do meu celular</h2></div>
-            <img src="imagens/album/foto 7.jpg" alt="Imagem 3" class="foto">
-        </div>
-
-        <div class="item esquerda">
-            <img src="imagens/album/foto 8.jpg" alt="Imagem 4" class="foto">
-            <div class="texto"><h2>No aniversario da Rafaela, e passamos no MC</h2></div>
-        </div>
-        
-        <div class="item direita">
-            <div class="texto"><h2>Cochilar na sua perna foi a melhor coisa!!</h2></div>
-            <img src="imagens/album/foto 9.jpg" alt="Imagem 3" class="foto">
-        </div>
-        
-        <div class="item esquerda">
-            <img src="imagens/album/foto 10.jpg" alt="Imagem 4" class="foto">
-            <div class="texto"><h2>Esse aniversariodo juan foi inesquecivel </h2></div>
-        </div>
-        
-        <div class="item direita">
-            <div class="texto"><h2>Como você faz para ser tão linda?!</h2></div>
-            <img src="imagens/album/foto 11.jpg" alt="Imagem 3" class="foto">
-        </div>
-        
-        <div class="item esquerda">
-            <img src="imagens/album/foto 12.jpg" alt="Imagem 4" class="foto">
-            <div class="texto"><h2>A foto que enviamos para minha mãe kkkkkkk</h2></div>
-        </div>
-
-        <div class="item direita">
-            <div class="texto"><h2>Simplismente estamos uns gos...!!</h2></div>
-            <img src="imagens/album/foto 13.jpg" alt="Imagem 3" class="foto">
-        </div>
-        
-        <div class="item esquerda">
-            <img src="imagens/album/foto 14.jpg" alt="Imagem 4" class="foto">
-            <div class="texto"><h2>A Kiss Cam do Hallowen</h2></div>
-        </div>
-
-        <div class="item direita">
-            <div class="texto"><h2>O Batman precisa de sua Mulher Gato para salvar o mundo</h2></div>
-            <img src="imagens/album/foto 15.jpg" alt="Imagem 3" class="foto">
-        </div>
+        <div class="carta">
+        <h1>Essas são as nossas memorias</h1> 
+        <h1>..................................&lt;3...................................</h1>
+    
+            <div class="item direita">
+                
+                <div class="texto">
+                   
+                    <h2>Nossa primeira foto, quando estavavamos com a Ana na garagem!!</h2>
+                    
+                </div>
+                <img src="imagens/album/foto 1.jpg" alt="Imagem 1" class="foto">
+            </div>
             
-        <div class="item esquerda">
-            <img src="imagens/album/foto 16.jpg" alt="Imagem 4" class="foto">
-            <div class="texto"><h2>A primeira vez que você conheceu a Isa e a Laura</h2></div>
+            <div class="carta_d">
+            <div class="item esquerda">
+                <img src="imagens/album/foto 2.jpg" alt="Imagem 2" class="foto">
+                <div class="texto"><h2>Essa foto você está tao linda com esse filtro!!😍</h2></div>
+            </div>
         </div>
 
-        <div class="item direita">
-            <div class="texto"><h2>Ficamos assistindo filme logo depois da sua aula</h2></div>
-            <img src="imagens/album/foto 17.jpg" alt="Imagem 3" class="foto">
+            <div class="item direita">
+                <div class="texto"><h2>Nosso primeiro story, logo que voltamos da liberdade. Completamos 1 mês nesse dia!!</h2></div>
+                <img src="imagens/album/foto 3.jpg" alt="Imagem 3" class="foto">
+            </div>
+            <div class="carta_e">
+            <div class="item esquerda">
+                <img src="imagens/album/foto 4.jpg" alt="Imagem 4" class="foto">
+                <div class="texto"><h2>Na casa do Juan, quando fomos para a "reuniao" do RH kkkkkk</div>
+            </div>
+        </div>
+
+            <div class="item direita">
+                <div class="texto"><h2> O dia que fomos no Bario, tiramos aquela foto na Cabine Fotográfica!!</h2></div>
+                <img src="imagens/album/foto 5.jpg" alt="Imagem 3" class="foto">
+            </div>
+            <div class="carta_d">
+            <div class="item esquerda">
+                <img src="imagens/album/foto 6.jpg" alt="Imagem 4" class="foto">
+                <div class="texto"><h2>Esse video de eu comendo um dogão kkkkk</h2></div>
+            </div>
+        </div>
+
+            <div class="item direita">
+                <div class="texto"><h2>É simplismente o fundo de tela do meu celular</h2></div>
+                <img src="imagens/album/foto 7.jpg" alt="Imagem 3" class="foto">
+            </div>
+            <div class="carta_e">
+            <div class="item esquerda">
+                <img src="imagens/album/foto 8.jpg" alt="Imagem 4" class="foto">
+                <div class="texto"><h2>No aniversario da Rafaela, e passamos no MC</h2></div>
+            </div>
+        </div>
+
+            <div class="item direita">
+                <div class="texto"><h2>Cochilar na sua perna foi a melhor coisa!!</h2></div>
+                <img src="imagens/album/foto 9.jpg" alt="Imagem 3" class="foto">
+            </div>
+            <div class="carta_d">
+            <div class="item esquerda">
+                <img src="imagens/album/foto 10.jpg" alt="Imagem 4" class="foto">
+                <div class="texto"><h2>Esse aniversario do juan foi inesquecivel </h2></div>
+            </div>
+        </div>
+
+            <div class="item direita">
+                <div class="texto"><h2>Como você faz para ser tão linda?!</h2></div>
+                <img src="imagens/album/foto 11.jpg" alt="Imagem 3" class="foto">
+            </div>
+            <div class="carta_e">
+            <div class="item esquerda">
+                <img src="imagens/album/foto 12.jpg" alt="Imagem 4" class="foto">
+                <div class="texto"><h2>A foto que enviamos para minha mãe kkkkkkk</h2></div>
+            </div>
+        </div>
+
+            <div class="item direita">
+                <div class="texto"><h2>Simplismente estamos uns gos...!!</h2></div>
+                <img src="imagens/album/foto 13.jpg" alt="Imagem 3" class="foto">
+            </div>
+            <div class="carta_d">
+            <div class="item esquerda">
+                <img src="imagens/album/foto 14.jpg" alt="Imagem 4" class="foto">
+                <div class="texto"><h2>A Kiss Cam do Hallowen</h2></div>
+            </div>
+        </div>
+
+            <div class="item direita">
+                <div class="texto"><h2>O Batman precisa de sua Mulher Gato para salvar o mundo</h2></div>
+                <img src="imagens/album/foto 15.jpg" alt="Imagem 3" class="foto">
+            </div>
+            <div class="carta_e">
+            <div class="item esquerda">
+                <img src="imagens/album/foto 16.jpg" alt="Imagem 4" class="foto">
+                <div class="texto"><h2>A primeira vez que você conheceu a Isa e a Laura</h2></div>
+            </div>
+        </div>
+
+            <div class="item direita">
+                <div class="texto"><h2>Ficamos assistindo filme logo depois da sua aula</h2></div>
+                <img src="imagens/album/foto 17.jpg" alt="Imagem 3" class="foto">
+            </div>
+            <div class="carta_d">
+            <div class="item esquerda">
+                <img src="imagens/album/foto 18.jpg" alt="Imagem 4" class="foto">
+                <div class="texto"><h2>Você veio jantar com a minha familia!!</h2></div>
+            </div>
         </div>
         
-        <div class="item esquerda">
-            <img src="imagens/album/foto 18.jpg" alt="Imagem 4" class="foto">
-            <div class="texto"><h2>Você veio jantar com a minha familia!!</h2></div>
-        </div>
-        
+            <div class="item direita">
+                <div class="texto"><h2>To gatwinho nessa foto em!!</h2></div>
+                <img src="imagens/album/foto 19.jpg" alt="Imagem 19" class="foto">
+            </div>
+            <div class = "carta_e">                
+            <div class="item esquerda">
+                <img src="imagens/album/foto 20.jpg" alt="Imagem 20" class="foto">
+                <div class="texto"><h2>Ficamos 2hrs esperando para entrar</h2></div>
+            </div>
+            </div>
+            
+            <div class="item direita">
+                <div class="texto"><h2>Atras da gente tem a roda gigante que doi o bumbum </h2></div>
+                <img src="imagens/album/foto 21.jpg" alt="Imagem 21" class="foto">
+            </div>
+            
+            <div class = "carta_d">                
+            <div class="item esquerda">
+                <img src="imagens/album/foto 22.jpg" alt="Imagem 22" class="foto">
+                <div class="texto"><h2>Esses trigêmeos são engraçados kkkkk</h2></div>
+            </div>
+            </div>
+            
+            <div class="item direita">
+                <div class="texto"><h2>Ficamos meia hora pra tirar essa foto</h2></div>
+                <img src="imagens/album/foto 23.jpg" alt="Imagem 23" class="foto">
+            </div>
+            
+            <div class = "carta_e">                
+            <div class="item esquerda">
+                <img src="imagens/album/foto 24.jpg" alt="Imagem 24" class="foto">
+                <div class="texto"><h2>Esse dia foi muito incrivel🤩</h2></div>
+            </div>
+            </div>
+            
+            <div class="item direita">
+                <div class="texto"><h2>Eita diazinho bom esse!!</h2></div>
+                <img src="imagens/album/foto 25.jpg" alt="Imagem 25" class="foto">
+            </div>
+            
+            <div class = "carta_d">                
+            <div class="item esquerda">
+                <img src="imagens/album/foto 26.jpg" alt="Imagem 26" class="foto">
+                <div class="texto"><h2>Meus dois amores!!!</h2></div>
+            </div>
+            </div>
+            
+            <div class="item direita">
+                <div class="texto"><h2>Que coisa mais linda🥰</h2></div>
+                <img src="imagens/album/foto 27.jpg" alt="Imagem 27" class="foto">
+            </div>
+            
+            <div class = "carta_e">                
+            <div class="item esquerda">
+                <img src="imagens/album/foto 28.jpg" alt="Imagem 28" class="foto">
+                <div class="texto"><h2>Que casal bonitooo!! </h2></div>
+            </div>
+            </div>
+            
+            <div class="item direita">
+                <div class="texto"><h2>Parece que somos pais!!</h2></div>
+                <img src="imagens/album/foto 29.jpg" alt="Imagem 29" class="foto">
+            </div>
+            
+            <div class = "carta_d">                
+            <div class="item esquerda">
+                <img src="imagens/album/foto 30.jpg" alt="Imagem 30" class="foto">
+                <div class="texto"><h2>O pior filme que ja assisti kkkkkkkk</h2></div>
+            </div>
+            </div>
+            
+            <div class="item direita">
+                <div class="texto"><h2>Meu mozãoooooo!!!</h2></div>
+                <img src="imagens/album/foto 31.jpg" alt="Imagem 31" class="foto">
+            </div>
+            
+            <div class = "carta_e">                
+            <div class="item esquerda">
+                <img src="imagens/album/foto 32.jpg" alt="Imagem 32" class="foto">
+                <div class="texto"><h2>Que coisa mais linda essa menina!</h2></div>
+            </div>
+            </div>
+            
+            <div class="item direita">
+                <div class="texto"><h2>Essa foto demorou mais saiu!!!!</h2></div>
+                <img src="imagens/album/foto 33.jpg" alt="Imagem 33" class="foto">
+            </div>
+            
         
         <h1>proximas fotos...</h1>
+    </div>
     </div>
    
     <div class="inferior">

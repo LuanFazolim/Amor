@@ -7,7 +7,7 @@
     <title>I love you</title>
     <style>
     body {
-        transition: background-color 0.5s;
+        transition: background-color 0.2s;
         font-family: Arial, sans-serif;
         margin: 0;
         padding: 0;
@@ -17,10 +17,10 @@
       
     }
     .carta{
-      transition: background-color 0.5s;
+      transition: background-color 0.2s;
       margin-left:calc(80%/8) ;
       width: 80%; /* Largura da "carta" */
-      height: 20%; /* Altura da "carta" */
+      height: 20%; /* Altura da "carta" */  
       background-color: #ffc5c5; /* Fundo branco para o papel */
       box-shadow: 0 40px 10px rgba(0, 0, 0, 0.2); /* Sombra para dar profundidade */
       border-radius: 10px; /* Bordas arredondadas */
@@ -28,10 +28,43 @@
       box-sizing: border-box; /* Inclui padding no tamanho total */
       line-height: 1.8; /* Espaçamento entre as linhas */
       border: 2px solid #c62727; /* Simula bordas de papel */
+      transition: border 0.2s;
     }
+    .triangulo {
+      width: 0;
+      height: 0;
+      border-left: 38vw solid transparent;  /* Borda esquerda transparente */
+      border-right: 38vw solid transparent; /* Borda direita transparente */
+      border-bottom: 30vw solid #c62727;      /* Apenas a borda inferior visível */
+      background-color: transparent; 
+      border-radius: 10px;
+      align-self: center;
+      margin-bottom: -22vw;
+      
+}
+      
+    .triangulo-bord{
+      width: 0;
+      height: 0;
+      border-left: 37vw solid transparent;  /* Borda esquerda transparente */
+      border-right: 37vw solid transparent; /* Borda direita transparente */
+      border-bottom: 29vw solid rgb(0, 0, 0)  ;    /* Apenas a borda inferior visível */
+      background-color: transparent;
+      margin-top: -7.6vw;
+      align-self: center;
     
+    }
+    .linha{
+
+        width:1px;
+        height: 29vw;
+        background-color: #c62727;
+        margin-top: -29vw;
+        align-self: center;
+
+    }
     .topo {
-        transition: background-color 0.5s;
+        transition: background-color 0.2s;
         color: #ffffff;
         padding: 10;
         text-align: center;
@@ -99,13 +132,14 @@
     .inferior {
     
         color: #ffc5c5;
-        transition: background-color 0.5s;
+        transition: background-color 0.2s;
         background-color:  #c62727;
         text-align: center;
         position: fixed;
         padding: 0.52%;
         width: 100%;
         bottom: 0;
+     
 
     }
 
@@ -119,31 +153,36 @@
     .texto h1{
         color: #c62727;
         text-align: center;
-        padding: 90px;
-        margin-bottom: 400px;
+        padding: 10vw;
+        margin-bottom: 40vw;
         font-family: 'Verdana', sans-serif;
         text-shadow: 1px 2px 2px #6e5b5b;
+        font-size: 3vw;
        
        
         
     }
     .texto h2{
-        margin-left: 40px;
+        
         color: #c62727;
-        margin-bottom: 90px;
+        margin-bottom: 10vw;
         text-align: justify; /* Alinha o texto como uma carta */
         font-family: 'Georgia', serif;
+        font-size: 1.5vw;     
     }
     .texto h3{
         
         color: #c62727;
         margin-left: 13%;
         max-width: 77%;
-        margin-bottom: 500px;
+        margin-bottom: 40vw;
         text-align: justify; /* Alinha o texto como uma carta */
         font-family: 'Georgia', serif;
+        font-size: 1vw;
 
     }
+ 
+
 
    
    
@@ -165,7 +204,8 @@
                 Sesq.forEach(img => { img.style.boxShadow =  `-15px -15px 0px ${cor}`; });
 
                 document.querySelector('.carta').style.borderColor = cor
-                
+                document.querySelector('.triangulo').style.borderBottomColor = cor
+                document.querySelector('.linha').style.backgroundColor = cor
 
                 
 
@@ -187,7 +227,8 @@
                document.querySelector('.inferior').style.color= bgColor
                document.querySelector('.carta').style.backgroundColor = bgColor
                FshaColor(shaColor)
-           }
+               document.querySelector('.triangulo-bord').style.borderBottomColor = bgColor
+               }
            carregarCores();
     </script>
 
@@ -231,8 +272,8 @@
                     localStorage.setItem('topoColor', topoColor);
                     localStorage.setItem('textoColor', textoColor);
                     localStorage.setItem('coracaoSrc', coracaoSrc);
-                    localStorage.setItem('navColor', navColor)
-                    localStorage.setItem('shaColor', shaColor)
+                    localStorage.setItem('navColor', navColor);
+                    localStorage.setItem('shaColor', shaColor);
                    
                     
                 }
@@ -256,8 +297,9 @@
                         toponav.forEach(link => { link.style.color = navColor; }); 
                         document.querySelector('.inferior').style.color= bgColor
                         document.querySelector('.carta').style.backgroundColor = bgColor
-                        
                         FshaColor(shaColor)
+                        document.querySelector('.triangulo-bord').style.borderBottomColor = bgColor
+                        
                         
                     }
             }
@@ -270,6 +312,7 @@
                 document.body.style.backgroundColor =ver_cla
                 document.querySelector('.inferior').style.color= ver_cla
                 document.querySelector('.carta').style.backgroundColor = ver_cla
+                document.querySelector('.triangulo-bord').style.borderBottomColor = ver_cla
 
                 //topoColor
                 topo.style.backgroundColor = ver_bor;
@@ -307,7 +350,7 @@
                 toponav.forEach(link =>{link.style.color = bran})
                 document.querySelector('.inferior').style.color= azul_cla
                 FshaColor(azul_bor)
-
+                document.querySelector('.triangulo-bord').style.borderBottomColor = azul_cla
                 salvarCores(azul_cla, azul_bor, bran, "imagens/coracao/branco.png", bran, azul_bor);
                 
         
@@ -324,7 +367,7 @@
                 toponav.forEach(link =>{link.style.color = ver})
                 document.querySelector('.inferior').style.color= pre
                 FshaColor(ver)
-
+                document.querySelector('.triangulo-bord').style.borderBottomColor = pre
                 salvarCores(pre, pre, ver, "imagens/coracao/vermelho.png", ver,ver);
                 
           
@@ -340,6 +383,7 @@
                 toponav.forEach(link =>{link.style.color = azul})
                 document.querySelector('.inferior').style.color = pre
                 FshaColor(azul)
+                document.querySelector('.triangulo-bord').style.borderBottomColor = pre
 
                 salvarCores(pre, pre, azul, "imagens/coracao/azul.png", azul,azul);
                 
@@ -356,6 +400,7 @@
                 toponav.forEach(link =>{link.style.color = roxo})
                 document.querySelector('.inferior').style.color= pre
                 FshaColor(roxo)
+                document.querySelector('.triangulo-bord').style.borderBottomColor = pre
 
                 salvarCores(pre, pre, roxo, "imagens/coracao/roxo.png", roxo,roxo);
                 
@@ -365,13 +410,18 @@
         
         
            
-        window.onload = carregarCores;
+            window.onload = carregarCores;
 
     </script>
     </div>
     
     <div class="texto">
+        
         <h1> Minhas Cartinhas dos nossos aniversarios!!!</h1>
+        <div class="triangulo"></div>
+        <div class="triangulo-bord">  </div>
+        <div class="linha"></div>
+        
         <div class="carta">
             
             <h2>- (18/11/2024) 4º mês:</h2>
@@ -384,7 +434,7 @@
 
             <h2>- (18/12/2024) 5º mês:</h2>
         <h3>...</h3>
-        <h3>Assinado <br><br>Seu namorado Luan</h3>
+        <h3>Assinado: <br><br>Seu namorado Luan</h3>
         </div>
     </div>
 
