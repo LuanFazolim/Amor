@@ -107,9 +107,12 @@
         cursor: pointer; 
         border: none;
         background: none; 
-        color: #000000; } 
+        color: #000000; 
+         ;
+} 
 
-    .mudar_cor1 { margin-top: -20px; } 
+  
+    .mudar_cor1 { margin-top: -45px; } 
     .mudar_cor2 { margin-left: 50px; }
     .mudar_cor3 { margin-left: 90px; }
     .mudar_cor4 { margin-left: 130px; }
@@ -134,13 +137,17 @@
         color: #ffc5c5;
         transition: background-color 0.2s;
         background-color:  #c62727;
-        text-align: center;
+        
         position: fixed;
         padding: 0.52%;
         width: 100%;
         bottom: 0;
      
 
+    }
+   
+    .inferior p{
+        text-align: center;
     }
 
     .texto{
@@ -190,6 +197,12 @@
         }
         .texto h3{
             font-size: 1.8vw;
+        }
+        .inferior p{
+            text-align: right;
+            padding-bottom: 1vw;
+            padding-right: 20vw;
+            
         }
     }
 
@@ -473,7 +486,7 @@
 
 
     <div class="inferior">
-        Eu te amo&lt;3
+        <p>Eu te amo&lt;3</p>
         <button class="mudar_cor1" onclick="mudar_cor1()">
             <img src="imagens/tema/vermelho_branco.png" alt="Imagem" width=25px>  
         </button>

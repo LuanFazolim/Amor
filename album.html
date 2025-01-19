@@ -54,7 +54,7 @@
     } 
     
 
-    .mudar_cor1 { margin-top: -20px; } 
+    .mudar_cor1 { margin-top: -45px; } 
     .mudar_cor2 { margin-left: 50px; }
     .mudar_cor3 { margin-left: 90px; }
     .mudar_cor4 { margin-left: 130px; }
@@ -166,44 +166,47 @@
         color: #ffc5c5;
         transition: background-color 0.2s;
         background-color:  #c62727;
-        text-align: center;
         position: fixed;
         padding: 0.52%;
         width: 100%;
         bottom: 0;
 
 }
-.carta_d{
-    
-    padding: 7%;
-    margin-left: 8vw;
-    box-shadow: -1vw 1vw 10px rgba(0, 0, 0, 0.2); /* Sombra para dar profundidade */
-    
-}
-.carta_e{
-   margin-left: -2.5vw;
-   padding-top: 5% ;
-   padding-left: 20%;
-   box-shadow: 1vw 1vw 10px rgba(0, 0, 0, 0.2); /* Sombra para dar profundidade */
-   
-}
-.carta{
-    padding-top: 4vw;
-    
-}
 
-.carta, .carta_d, .carta_e{
-      transition: background-color 0.2s;
-      margin-bottom: 20%;
-      margin-top: 20%;
-      width: 94%; /* Largura da "carta" */
-      height: 20%; /* Altura da "carta" */  
-      background-color: #ffc5c5; /* Fundo branco para o papel */
-      border-radius: 10px; /* Bordas arredondadas */
-      box-sizing: border-box; /* Inclui padding no tamanho total */
-      line-height: 1.8; /* Espaçamento entre as linhas */
-      border: 2px solid #c62727; /* Simula bordas de papel */
+    .inferior p{
+        text-align: center
     }
+    .carta_d{
+        
+        padding: 7%;
+        margin-left: 8vw;
+        box-shadow: -1vw 1vw 10px rgba(0, 0, 0, 0.2); /* Sombra para dar profundidade */
+        
+    }
+    .carta_e{
+    margin-left: -2.5vw;
+    padding-top: 5% ;
+    padding-left: 20%;
+    box-shadow: 1vw 1vw 10px rgba(0, 0, 0, 0.2); /* Sombra para dar profundidade */
+    
+    }
+    .carta{
+        padding-top: 4vw;
+        
+    }
+
+    .carta, .carta_d, .carta_e{
+        transition: background-color 0.2s;
+        margin-bottom: 20%;
+        margin-top: 20%;
+        width: 94%; /* Largura da "carta" */
+        height: 20%; /* Altura da "carta" */  
+        background-color: #ffc5c5; /* Fundo branco para o papel */
+        border-radius: 10px; /* Bordas arredondadas */
+        box-sizing: border-box; /* Inclui padding no tamanho total */
+        line-height: 1.8; /* Espaçamento entre as linhas */
+        border: 2px solid #c62727; /* Simula bordas de papel */
+        }
     
     @media (max-width: 768px) {
         .direita .foto{
@@ -227,6 +230,12 @@
         .esquerda .texto, .direita .texto{
             padding: 1vw;
             margin: 2.8vw;
+        }
+        .inferior p{
+            text-align: right;
+            padding-bottom: 1vw;
+            padding-right: 20vw;
+            
         }
     }
 
@@ -803,7 +812,7 @@
     </div>
    
     <div class="inferior">
-        Eu te amo&lt;3
+        <p>Eu te amo&lt;3</p>
         <button class="mudar_cor1" onclick="mudar_cor1()">
             <img src="imagens/tema/vermelho_branco.png" alt="Imagem" width=25px>  
         </button>
