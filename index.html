@@ -84,7 +84,6 @@
         font-size: 16px;
         text-align: left;
         padding: 10px;
-        margin-left: 85px;
         color: #ffffff;
 
     }
@@ -187,6 +186,64 @@
         font-size: 1vw;
 
     }
+    .player-container {
+        position: fixed;
+        bottom: 10px;
+        right: 10px;
+        width: 300px;
+        height: 200px;
+        background-color: #ffc5c5;
+        border: 2px solid #c62727;
+        border-radius: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        z-index: 1000;
+        touch-action: none;
+        transition: width 0.3s, height 0.3s;
+    }
+    .player-header {
+        background-color: #ffc5c5;
+        padding-left: 15px;
+        cursor: move;
+        text-align: center;
+        font-weight: bold;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .minimize-btn {
+        background: none;
+        border: none;
+        font-size: 30px;
+        cursor: pointer;
+        color: #c62727;
+        padding: 15px;
+        margin-top: -15px;
+    }
+    iframe {
+        width: 100%;
+        height: calc(100% - 45px);
+        border: none;
+    }
+    .minimized {
+        width: 100px;
+        height: 40px;
+    }
+    .minimized iframe {
+        display: none;
+    }
+    .loading {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #ffc5c5;
+        color: #c62727;
+        font-size: 16px;
+        font-weight: bold;
+    }
+
  
     @media (max-width: 768px) {
         .texto h1{
@@ -194,9 +251,13 @@
         }
         .texto h2{
             font-size: 2.5vw;
+            padding-left: 5%;
         }
         .texto h3{
-            font-size: 1.8vw;
+            font-size: 1.7vw;
+            max-width: 100%;
+            margin: 7%;
+            padding-bottom: 50%;
         }
         .inferior p{
             text-align: right;
@@ -204,9 +265,19 @@
             padding-right: 20vw;
             
         }
+        .carta{
+            padding: 0px;
+            
+        }
+
+        .player-container{
+            width: 0;
+            height: 0;
+
+        }
     }
 
-   
+    
    
 
 
@@ -215,7 +286,7 @@
     </style>
     <script>
       function FshaColor (cor){
-                const color = document.querySelectorAll('.texto h1, .texto h2, .texto h3, .container h1, .texto');
+                const color = document.querySelectorAll('.texto h1, .texto h2, .texto h3, .container h1, .texto, .minimize-btn,.loading');
                 const Bcolor = document.querySelectorAll('.topo2, .inferior');
                 const Sdire =  document.querySelectorAll('.direita .foto');
                 const Sesq = document.querySelectorAll('.esquerda .foto');
@@ -228,7 +299,7 @@
                 document.querySelector('.carta').style.borderColor = cor
                 document.querySelector('.triangulo').style.borderBottomColor = cor
                 document.querySelector('.linha').style.backgroundColor = cor
-
+                document.querySelector('.player-container').style.borderColor = cor
                 
 
                 
@@ -321,7 +392,9 @@
                         document.querySelector('.carta').style.backgroundColor = bgColor
                         FshaColor(shaColor)
                         document.querySelector('.triangulo-bord').style.borderBottomColor = bgColor
-                        
+                        document.querySelector('.player-header').style.backgroundColor = bgColor
+                        document.querySelector('.loading').style.backgroundColor = bgColor
+                        document.querySelector('.player-container').style.backgroundColor = bgColor
                         
                     }
             }
@@ -335,7 +408,10 @@
                 document.querySelector('.inferior').style.color= ver_cla
                 document.querySelector('.carta').style.backgroundColor = ver_cla
                 document.querySelector('.triangulo-bord').style.borderBottomColor = ver_cla
-
+                document.querySelector('.player-header').style.backgroundColor = ver_cla
+                document.querySelector('.loading').style.backgroundColor = ver_cla
+                document.querySelector('.player-container').style.backgroundColor = ver_cla
+                
                 //topoColor
                 topo.style.backgroundColor = ver_bor;
 
@@ -374,6 +450,9 @@
                 FshaColor(azul_bor)
                 document.querySelector('.triangulo-bord').style.borderBottomColor = azul_cla
                 salvarCores(azul_cla, azul_bor, bran, "imagens/coracao/branco.png", bran, azul_bor);
+                document.querySelector('.player-header').style.backgroundColor = azul_cla
+                document.querySelector('.loading').style.backgroundColor = azul_cla
+                document.querySelector('.player-container').style.backgroundColor = azul_cla
                 
         
             }
@@ -390,6 +469,10 @@
                 document.querySelector('.inferior').style.color= pre
                 FshaColor(ver)
                 document.querySelector('.triangulo-bord').style.borderBottomColor = pre
+                
+                document.querySelector('.player-header').style.backgroundColor = pre
+                document.querySelector('.loading').style.backgroundColor = pre
+                document.querySelector('.player-container').style.backgroundColor = pre
                 salvarCores(pre, pre, ver, "imagens/coracao/vermelho.png", ver,ver);
                 
           
@@ -406,6 +489,10 @@
                 document.querySelector('.inferior').style.color = pre
                 FshaColor(azul)
                 document.querySelector('.triangulo-bord').style.borderBottomColor = pre
+                document.querySelector('.player-header').style.backgroundColor = pre
+                document.querySelector('.loading').style.backgroundColor = pre
+                document.querySelector('.player-container').style.backgroundColor = pre
+
 
                 salvarCores(pre, pre, azul, "imagens/coracao/azul.png", azul,azul);
                 
@@ -423,6 +510,10 @@
                 document.querySelector('.inferior').style.color= pre
                 FshaColor(roxo)
                 document.querySelector('.triangulo-bord').style.borderBottomColor = pre
+                document.querySelector('.player-header').style.backgroundColor = pre
+                document.querySelector('.loading').style.backgroundColor = pre
+                document.querySelector('.player-container').style.backgroundColor = pre
+
 
                 salvarCores(pre, pre, roxo, "imagens/coracao/roxo.png", roxo,roxo);
                 
@@ -481,10 +572,6 @@
         </div>
     </div>
 
-    
-        
-
-
     <div class="inferior">
         <p>Eu te amo&lt;3</p>
         <button class="mudar_cor1" onclick="mudar_cor1()">
@@ -508,6 +595,25 @@
         
     
     </div>
+
+    
+    <div class="player-container" id="playerContainer">
+        <div class="player-header" id="playerHeader">
+        🎵
+            <button class="minimize-btn" id="minimizeBtn">_</button>
+        </div>
+        <div class="loading" id="loadingMessage">
+            Ta carregando gatinha...
+        </div>
+        
+        <!-- Player do YouTube -->
+        <iframe id="youtubePlayer" src="https://www.youtube.com/embed/videoseries?list=PLJ3Oo9LujPePDqknyD_kSAn58biJlJKmJ&si=QhT8fa0VdO13ruY7" 
+            loading="lazy" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="display:none;">
+        </iframe>
+    </div>
+    <script src="janelaYT.js"></script>
+    
+    
 
 </body>
 
