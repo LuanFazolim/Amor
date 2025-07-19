@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      height: 1vh;  
+      background-color: #0e0d0d;
+      overflow-x: hidden;
+    }
+
+    .confete {
+      position: absolute;
+      top: 0;
+      width: 700px;
+      z-index: 1;
+    }
+
+    .confete.esquerda {
+      left: -170px; /* empurra para fora da tela pela esquerda */
+      top: -170px;
+    }
+
+    .confete.direita {
+      right: -165px; /* empurra para fora da tela pela direita */
+      top: -165px;
+    }
+
+    
+
+    .texto_1_ano{
+        width: 45vw;
+        display: block;
+        margin: 0 auto;
+        margin-top: -10vw;
+        margin-bottom: 9vw;
+      
+      
+    }
+    .video_1{
+          text-align: center;
+          margin-top: 20vw;
+       
+          
+    }
+
+    .video-container {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+    margin: 0 auto;
+    border-top: 1px solid  #edbe00; /* ✅ borda interna no topo do vídeo */
+    border-radius: 30px;
+    /* importante pra borda contar no tamanho */
+    }
+
+    .video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    }
+
+    .botao_voltar{
+      width: 10vw;
+      display: block;
+      margin: 0 auto;
+      margin-top: 5vw;
+      margin-bottom: 6vw;
+      
+
+    }
+    
+    .texto{
+      display: flex;
+      flex-direction: column;
+    }
+    .texto h3{
+        margin-top:10vw;
+        font-family: 'Anonymous', serif;
+        color: #edbe00;
+        margin-left: 13%;
+        max-width: 77%;
+        margin-bottom: 40vw;
+        text-align: justify; /* Alinha o texto como uma carta */
+        
+        font-size: 1.5vw;
+
+    }
+    .fita_D{
+      width: 40vw;
+      margin-left: 75vw;
+      margin-top: -30vw;
+      position: absolute;
+      
+      
+    }
+
+    .fita_E{
+      width: 40vw;
+      margin-left: -16vw;
+      margin-top: -30vw;
+      position: absolute;
+     
+      
+    }
+
+
+
+    .carta_d{
+      font-family: 'Anonymous', serif;
+      padding: 7%;
+      margin-left: 8vw;
+      box-shadow: -1vw 1vw 10px  rgba(0, 0, 0, 0.2); /* Sombra para dar profundidade */
+      
+    }
+    .carta_e{
+    margin-left: -2.5vw;
+    padding-top: 5% ;
+    padding-left: 20%;
+    box-shadow: 1vw 1vw 10px rgba(0, 0, 0, 0.2); /* Sombra para dar profundidade */
+
+    }
+    .carta{
+      padding-top: 4vw;
+      
+    }
+
+    .carta, .carta_d, .carta_e{
+      transition: background-color 0.2s;
+      margin-bottom: 20%;
+      margin-top: 20%;
+      width: 94%; /* Largura da "carta" */
+      height: 20%; /* Altura da "carta" */  
+      background-color:#0e0d0d; /* Fundo branco para o papel */
+      border-radius: 10px; /* Bordas arredondadas */
+      box-sizing: border-box; /* Inclui padding no tamanho total */
+      line-height: 1.8; /* Espaçamento entre as linhas */
+      border: 2px solid #edbe00; /* Simula bordas de papel */
+      }
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+    .carta h1{
+
+      font-size: 3vw;
+      text-align: center;
+      padding-bottom: 30vw;
+      padding-top: 5vw;
+      font-family: 'F_Love', serif;
+      color: #edbe00
+
+    }
+    .item {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      margin-bottom: 4.16%; /* Espaço entre os itens */
+    }
+    .foto {
+      width: 27%; /* Ajuste a largura conforme necessário */
+      border-radius: 20px; /* Define o raio da borda arredondada */
+      margin-left: 5.2%; /* Espaço à esquerda da imagem */
+      margin-right: 5.2%; /* Espaço à direita da imagem */
+      
+    }
+    .texto {
+      color: #edbe00;
+      width: 100%; /* Ajuste a largura conforme necessário */
+      margin: 1.041vw; /* Espaço entre a imagem e o texto */
+      font-size: 1.2vw;
+    }
+
+    .direita {
+      justify-content: flex-end; /* Alinha o item à direita */
+    }
+    .direita .foto {
+      margin-left: auto; /* Empurra a imagem para a borda direita */
+      border: 4px solid; 
+      border-color: #edbe00;
+      width: 17vw;
+      
+    }
+    .esquerda {
+      justify-content: flex-start; /* Alinha o item à esquerda */
+    }
+    .esquerda .foto {
+      margin-right: auto; /* Empurra a imagem para a borda esquerda */
+      border: 4px solid; 
+      border-color: #edbe00;
+      width: 17vw;
+    }
+    .esquerda .texto {
+      font-family: 'Anonymous', serif;
+      text-align: center;
+      padding: 9vw;
+      border-bottom: 1px solid  #edbe00;
+      padding-bottom: 2px;
+      margin-left: -1px;
+      margin-right: 60px;
+    }
+    .direita .texto {
+      font-family: 'Anonymous', serif;
+      text-align: center;
+      padding: 12vw;
+      border-bottom: 1px solid  #edbe00;
+      padding-bottom: 2px;
+      margin-right: -1px;
+      margin-left: 60px;
+    }
+
+    .texto_inferior{
+      text-align: center;
+      color:  #edbe00;
+      padding: 10vw;
+      font-size: 7vw;
+      max-width: 20%;
+      
+    }
+
+      @media (max-width: 900px) {
+        .texto h3{
+          font-size: 2.5vw;
+        }
+
+        .confete {
+          width: 270px;
+        }
+
+        .confete.esquerda {   
+          left: -80px; /* empurra para fora da tela pela esquerda */
+          top: -80px;
+        }
+
+        .confete.direita {
+          right: -85px; /* empurra para fora da tela pela direita */
+          top: -85px;
+        }
+        
+        .direita .foto{
+            width: 30vw;
+        }
+        .esquerda .foto{
+            width: 30vw;
+        }
+        .foto{
+            margin-left: -3vw;
+        }
+        .carta_d{
+            margin-left: 1vw;
+            width: 92vw;
+        }
+        .texto{
+            font-size: 1.5vw;
+            
+
+        }
+        .esquerda .texto, .direita .texto{
+            padding: 1vw;
+            margin: 2.8vw;
+        }
+        .texto_inferior{
+          padding: 50vw;
+        }
+        }   
+        
+        
+        
+      @media (max-width: 400px) {
+        .confete {
+        
+        width: 160px;
+        
+        }
+        .confete.esquerda {
+        left: -40px; /* empurra para fora da tela pela esquerda */
+        top: -40px;
+        }
+
+        .confete.direita {
+        right: -45px; /* empurra para fora da tela pela direita */
+        top: -45px;
+        }
+
+        }   
+
+        @font-face {
+            font-family: 'Anonymous';
+            src: url('Fontes/Quicksand-VariableFont_wght.ttf') format('truetype');
+        }
+ 
+        
+        
+
+
+  </style>
+</head>
+<body>
+    <a href="index.html" target="_self">
+          <img id="botao_voltar" src="imagens/efeitos/botao_voltar.png" alt="logo" class="botao_voltar">
+    </a>
+    <img src="imagens/efeitos/texto_1_ano.png" class="texto_1_ano">
+    <img src="imagens/efeitos/Confete_E.gif" class="confete esquerda">
+    <img src="imagens/efeitos/Confete_D.gif" class="confete direita">
+    <img src="imagens/efeitos/fita_D.png" class="fita_D">
+    <img src="imagens/efeitos/fita_E.png" class="fita_E">
+    
+    <div class="video_1">
+        <div class="video-container">
+            <iframe width="1340" height="754" src="https://www.youtube.com/embed/iXrvxo32HsU" title="1 ano" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+    <div class="texto">
+      
+      <h3>Amor, eu nem sei como começar esse texto. Hoje completamos 1 ano, e tudo começou com uma simples mensagem, depois um beijo. Naquele momento, eu já sabia o que queria. Depois que te beijei pela primeira vez, vi o que é o amor. Senti meu coração bater num nível que nunca bateu, senti algo que é inexplicável. E quando olhei nos seus olhos... Eu encontrei meu caminho. Parece que o sol começou a ser mais claro, as cores mais vivas. Na verdade, você me mostrou a vida com um simples olhar.
+
+Depois do nosso beijo, logo fui te apresentar para o meu pai. Na verdade, a vontade que eu tinha era de falar: "Olha pai, essa aqui é o amor da minha vida, vou casar com ela um dia." Eu realmente queria falar isso, pois já sabia que era você. Meu coração falou mais alto que tudo, como nosso amor, que fala mais alto que qualquer coisa!
+
+Vivemos momentos que nunca imaginei que iria viver. Momentos em que um simples olhar seu já faz ter um espaço na minha memória, como se fosse um evento olhar esses olhos... O que vivemos até agora não é normal na geração em que estamos, e isso é o que mais me deixa feliz. Pois eu achei uma mulher que vive comigo o que eu sempre quis viver: um amor de verdade!
+
+Amor, às vezes eu te olho e penso se realmente você é real. A sua perfeição é tão incrível que não consigo associar o que é real e miragem... Parece que você é um anjo, com poderes sobrenaturais, onde, com um simples sorriso, você consegue queimar meu coração de amor. De verdade, amor, você é uma mulher especial, onde, ao olhar pra você, eu me imagino morando nos seus olhos. Eu olho pra eles e, tipo, é como se... ahhh, não consigo explicar. Tentei, procurei e não achei palavras para explicar a sensação de olhar para seus olhos. É uma sensação inexplicável, como se eu encontrasse a vida, sabe?! Seus olhos brilham mais que as estrelas, seu sorriso encanta mais que uma paisagem, seu nariz é tão perfeito quanto uma obra de arte. E seu corpo... é uma perfeição. Não sei explicar muito bem, mas normalmente as perfeições não têm explicação. Elas apenas existem, como você...
+
+Falando mais da sua beleza: sua alma. Algo intocável, mas enxergável. É uma alma tão pura, tão linda, tão sincera, tão boa... Sua alma é uma das provas de que você foi uma mulher criada pelas mãos de Deus!
+
+Sabe amor, todos temos lugares onde, ao entrar, não sentimos mal. E um desses meus lugares é a casa do meu pai, onde é um cemitério de coisa ruim. Não sei se posso dizer que sou fraco por não conseguir entrar lá sozinho e me sentir bem. Mas... A primeira vez que você entrou lá, eu vi aquela casa criando cor, como se você tirasse tudo de ruim dali. Parece que aquela casa precisava de você. Você mudou tudo lá. Até meu pai sentiu.
+
+Você é uma menina especial, amor. Quando você fala "tô feia" ou "sou burra", eu fico bravo. E é porque eu quero que você veja o que você faz nesse mundo. A sua cobrança para si mesma é extrema. E como eu fico vendo você se cobrando assim, sendo que você mudou a vida de todos ao seu redor? Você veio pra esse mundo com um propósito muito bom: o propósito de trazer bondade e paz. Lembra quando disse que sua alma é boa? Então, estava me referindo a isso. Você é diferente de todos. E eu fui a pessoa mais sortuda de estar com você. Porque eu não estou com uma simples mulher, mas sim com uma deusa. Uma deusa que não abaixa a cabeça pra nada, que não cai, não se entrega. Uma guerreira, batalhadora. Uma deusa de verdade!
+
+Eu te escolhi para ser minha namorada, mas na verdade eu quero mesmo é que você seja minha esposa, mãe dos meus filhos, minha princesa. Você é tudo na minha vida. Você é a minha vida!
+
+Quero poder viver todos os momentos ao seu lado. Os bons, quero deixar melhores. E os ruins, quero poder estar ao seu lado para te alegrar, para te levantar. Quero poder fazer a sua vida ter paz. Quero que você tenha uma vida de verdade. Você já ajudou muita gente, amor. Agora eu estou aqui para recompensar tudo que você já fez de bom nesse mundo. Quando digo que a sua felicidade é a minha, quero dizer que, com você feliz, o mundo fica feliz. E sabe como eu sei disso? Pois agora eu estou aqui, após um dia maravilhoso no nosso aniversário de um ano, com o amor da minha vida. Estou na janela escrevendo tudo isso, e quando olho para a lua... adivinha? Até ela está sorrindo, pois você está feliz. Eu estou feliz. A lua está feliz... Todos à sua volta ficam felizes, pois a sua energia é contagiante. Quando chego perto de você, eu sinto uma paz...
+
+365 dias. Hoje é mais que um dia especial: é o início de um ciclo. Na verdade, um ciclo não, pois ciclos têm fim. Já o nosso amor, não.
+
+Estamos com a aliança há três meses, e lembro até hoje os meses de plano para te pedir em namoro. Eu estava tão ansioso. Você me conhece, sabe muito bem que, quando eu boto um negócio na cabeça, eu não tiro mais. Então eu fui lá, organizei, planejei, comprei e... executei. Eu nunca tinha sentido tanta emoção na minha vida. Antes de eu agachar, estava nervoso. Meus sentidos ficaram até mais aguçados. Mas quando eu comecei a falar no seu ouvido, foi tudo ficando em câmera lenta. E quando agachei... não ouvia mais nada. Eu olhava pra você e apenas via você, como se só tivesse nós dois no mundo. Ali eu vi o que realmente o amor é capaz. Chorei, e muito. Foi um sentimento tão forte que nem consigo explicar o que senti. Olhei nos seus olhos e vi a certeza em sua escolha. Parece que o mundo estava vendo a gente, estava vendo nosso amor.
+
+Eu tenho muito orgulho de você, meu amor. Sua história de vida é algo que muitas pessoas não conseguiriam passar. Por isso, eu tenho orgulho de ser seu namorado. Quero que o mundo todo saiba o que é o nosso amor. Não tenho vergonha de falar em voz alta o quanto eu te amo!
+
+Sobre o amor, ainda não sei muito bem o que é. Na verdade, nunca saberemos. O que eu sei é o que eu sinto por você. Um amor tão grande, tão lindo, tão sincero...
+
+Eu encontrei você no momento em que mais precisava de um amor de verdade. E você veio. Me mostrou a vida. Me mostrou o que é amar e ser amado. Você me mostrou tantas coisas, amor. Me ensinou tantas coisas. Eu posso até dizer que eu sou quem sou porque você me ensinou muitas coisas.
+
+Nosso amor é infinito. Nada, ninguém vai acabar com ele. Somos feitos um para o outro. Como o mar foi feito para observar, o sol para iluminar, a água para molhar, o frio para esfriar, o quente para esquentar, o espaço para se perguntar, a vida para viver... Sobre a vida, sempre cogitei o porquê vivemos, o porquê estamos aqui. Mas nunca cheguei na resposta. Nunca ninguém chegou. Mas hoje eu digo: sei o que é a vida. A vida nada mais é do que viver. Simplesmente isso. O porquê estamos aqui não foi definido. Quem define somos nós mesmos. E por isso, quando te encontrei, descobri meu espaço na Terra. Como se a minha vida criasse um significado. Vou construir uma família com você, meu amor. Vou te amar para sempre. Vou te fazer feliz. Vou te proteger com todas as minhas forças, pois nada é mais sagrado do que a minha vida — que é você.
+
+Sabe amor, eu sou um cara que pensa muito. E você me mostrou que o pensamento extremo não é nada perto do amor. Pois agora meu vício é você. Estar ao seu lado. Te beijar. Te acariciar. Te olhar...
+
+Eu quero te agradecer por estar na minha vida, por fazer parte da minha história. Você me mostrou o sentido da vida. Me mostrou a paz, a felicidade, o amor. Você me salvou dos pensamentos e dúvidas confusas que mexiam com a minha cabeça. Você é literalmente o amor da minha vida.
+
+Estávamos conversando esses dias sobre você ser uma pessoa fácil de se magoar. Mas, amor, feche os olhos. Olha toda a sua trajetória até agora. Olha onde você está. Tudo o que você fez. Tudo que passou. Você abaixou a cabeça? Não, não abaixou. Você foi para o caminho errado? Não, não foi. Sabe, muitas pessoas iriam. E sabe por que você continua com a cabeça erguida? Porque você é a mulher mais forte que eu conheço. E a mulher mais inteligente que eu conheço. Novamente: você é especial!
+
+Nunca acreditei muito em “sorte”. Sempre achei que era apenas uma palavra usada como desculpa pela falta de conhecimento de algo. Mas desde que você entrou na minha vida, eu comecei a acreditar. Porque como eu consigo ser tão sortudo de estar com você? Até hoje eu me faço essa pergunta.
+
+O meu único sonho que infelizmente nunca vai se realizar seria você conhecer meu avô. Você ia adorar tanto ele. E ele iria te amar tanto. Porque ele iria me entender quando eu digo que você ilumina onde passa. Na verdade, ele com certeza te agradeceria por entrar na família. Como se fosse um milagre.
+
+Na vida temos milhares de dificuldades. Isso é normal. Mas quando eu vejo as coisas que você passa e simplesmente tenta se acostumar com isso, eu me revolto. Por que você? Por que você? Por que você? Não entra na minha cabeça uma mulher tão boa tendo que passar por essas coisas. Eu me revolto muito com isso. É injusto demais o que você passa! Mas saiba de uma coisa, amor: não importa as dificuldades. Elas podem ser difíceis, duradouras e até parecerem impossíveis. Mas nada, absolutamente nada, é capaz de te derrotar. Se por acaso você cair, nem que seja um pouco, eu estarei lá para te levantar. Se por acaso você precisar chorar, eu estarei lá, de braços abertos para você. Se por acaso precisar conversar, eu estarei lá, para te ouvir, te apoiar, te levantar, te animar, te ajudar. Você não merece isso que está passando. Você vai superar. Uma mulher dessa nunca cai. Nunca!
+
+Às vezes você fala que eu te mimo muito, mas na verdade eu só te trato do jeito que você merece: como uma princesa, uma deusa, uma mulher especial. Eu te trato como todos deveriam te tratar.
+
+Tudo que vivemos nesse 1 ano de relacionamento foi tão incrível, tão maravilhoso. Ainda não sei se estou vivendo um sonho. A gente se respeita tanto. Sempre que precisamos de algo, estamos juntos. Quando temos dificuldades, ficamos um ao lado do outro. Sempre.
+
+Uma coisa que eu reparo muito é esse companheirismo. Sempre que tenho alguma ideia maluca ou um plano louco, você é sempre aquela que fala “eu apoio”. Você topa todas as minhas loucuras. Se eu falar para irmos à China nadando, você com certeza iria. Você é minha melhor amiga pra tudo, amor. Isso é muito especial pra mim. Além de milhares de coisas, esse foi um dos motivos de eu ter me apaixonado por você!
+
+Olhar as estrelas ao deitar na praia, o pôr do sol ao acordar, o mar depois de um dia cheio, uma paisagem no alto do morro... tudo isso é uma das coisas que mais traz a sensação de vida. Porém, ao te olhar, eu vejo tudo isso e mais um pouco. Você é muito mais que um simples fim de tarde na praia, um banho quente no frio, uma piscina gelada no calor ou até um cochilo à tarde. Você é a junção de todas essas mínimas sensações de vida. É como se você fosse a vida. Fosse a minha vida.
+
+Ser amado: a sensação mais incrível que já senti. Saber que tem uma pessoa que se preocupa comigo, que lembra de mim, que me entende, me inspira, me salva, me acolhe, me ouve. Minha alma gêmea. Minha outra metade. Parece que você é a peça que faltava no meu quebra-cabeça.
+
+O quanto eu te amo? Bom, essa pergunta parece ser fácil, mas não consigo responder algo sem resposta. O amor não existe em definição. Ele só existe, como uma mágica. Não sei te dizer o quanto eu te amo, mas posso dizer que você é tudo que sempre sonhei, tudo que sempre pedi pra Deus. E hoje eu tenho você. Então parei de tentar achar o tamanho do meu amor por você. Só sinto ele a todo momento: quando acordo, na escola, academia, em casa, fora de casa, no banho, na hora de dormir... até em meus sonhos.
+
+Saiba que, ao meu lado, nada vai acontecer com você. Vou te proteger até a morte. Nem que eu precise dar a minha vida. Eu farei de tudo para te proteger. Moverei céus e terras. Enfrentarei tudo e mais um pouco para te ver bem e com um sorriso no rosto.
+
+Amor, obrigado por fazer parte da minha vida. Eu poderia passar dias escrevendo o quão especial você é pra mim, ou o quão perfeita você é! Obrigado de verdade por essas memórias que sempre vou lembrar. E quero construir mais milhares com você. E até a morte, vamos estar de mãos dadas. Nunca vamos soltar. Por nada. Nosso amor é eterno. Mágico.
+
+Eu te amo mais do que posso demonstrar. Eu te amo mais do que imaginei amar alguém. Eu te amo mais que lasanha. Eu te amo mais que o infinito.
+
+Minha garota, eu te amo e sempre vou te amar. Você sempre vai ser minha princesinha. Você merece o mundo. Eu te amo.
+
+  </div>
+
+    <div class="container">
+        <div class="carta">
+        <h1>Esse foi nosso dia 18/07/2025</h1> 
+      
+            
+            <div class="item direita">
+                <div class="texto">
+                    <h2>Uma flor para outra flor</h2>
+                </div>
+                <img src="imagens/1_ANO/foto 1.jpg" alt="Imagem 1" class="foto">
+            </div>
+            
+            <div class="carta_d">
+            <div class="item esquerda">
+                <img src="imagens/1_ANO/foto 2.jpg" alt="Imagem 2" class="foto">
+                <div class="texto"><h2>Isso sim foi um Date</h2></div>
+            </div>
+        </div>
+
+            <div class="item direita">
+                <div class="texto"><h2>Que casal lindo meu deus!!</h2></div>
+                <img src="imagens/1_ANO/foto 3.jpg" alt="Imagem 3" class="foto">
+            </div>
+            <div class="carta_e">
+            <div class="item esquerda">
+                <img src="imagens/1_ANO/foto 4.jpg" alt="Imagem 4" class="foto">
+                <div class="texto"><h2>Perdidos no tatuape kkkkkk</h2></div>
+            </div>
+        </div>
+        <div class="item direita">
+                <div class="texto"><h2>Eu amei tanto seu presente amor..😍</h2></div>
+                <img src="imagens/1_ANO/foto 5.jpg" alt="Imagem 5" class="foto">
+            </div>
+        </div>
+    <div class="texto_inferior">
+      I LOVE YOU
+    </div>
+
+
+
+</body>
+</html>

@@ -44,7 +44,7 @@
         margin-top: 40px;
     }
 
-    .mudar_cor1, .mudar_cor2, .mudar_cor3, .mudar_cor4, .mudar_cor5 { 
+    .mudar_cor1, .mudar_cor2, .mudar_cor3, .mudar_cor4, .mudar_cor5, .mudar_cor6{ 
         display: block; 
         margin-top: -30px; 
         margin-left: 10px; 
@@ -61,7 +61,8 @@
     .mudar_cor3 { margin-left: 90px; }
     .mudar_cor4 { margin-left: 130px; }
     .mudar_cor5 { margin-left: 170px; } 
-    
+    .mudar_cor6 { margin-left: 210px; } 
+
 
     
 
@@ -230,6 +231,7 @@
                 const topoColor = localStorage.getItem('topoColor') || '#c62727';
                 const textoColor = localStorage.getItem('textoColor') || '#ffffff';
                 const coracaoSrc = localStorage.getItem('coracaoSrc') || 'imagens/coracao/branco.png';
+                const coracao_anoSrc = localStorage.getItem('coracao_anoSrc') || 'imagens/coracao/ano_vermelho_1.png';
                 const navColor = localStorage.getItem('navColor') || '#ffffff';
                 const shaColor = localStorage.getItem('shaColor') || '#c62727';
 
@@ -238,6 +240,7 @@
                 document.querySelector('.topo').style.backgroundColor = topoColor;
                 document.querySelector('.topo').style.color = textoColor;
                 document.getElementById('coracao').src = coracaoSrc;
+                document.getElementById('coracao_ano').src = coracao_anoSrc;
                 document.querySelectorAll('.topo nav a').forEach(link => { link.style.color = navColor; });
                 document.querySelector('.inferior').style.color = bgColor;
                 document.querySelector('.carta')
@@ -266,139 +269,7 @@
         </nav>
         <div class="topo2"></div>
 
-    <script>
-
-        const ver = ["#ff3131"];
-        const ver_cla = ["#ffc5c5"]
-        const bran = ["#ffffff"]
-        const azul = ["#0900ad"]
-        const azul_cla = ["#93b1ff"]
-        const pre = ["#000"]
-        const roxo = ["#a016a5"]
-        const ver_bor = ["#c62727"]
-        const azul_bor = ["#332e9b"]
-
-
-        const topo = document.querySelector('.topo');
-        const toponav = document.querySelectorAll('.topo nav a')
-        const texto = document.querySelectorAll('.texto')
-        const coracao_ver = document.getElementById('coracao');
-      
-        
-        function salvarCores(bgColor, topoColor, textoColor, coracaoSrc, navColor, shaColor) {
-
-                    localStorage.setItem('bgColor', bgColor);
-                    localStorage.setItem('topoColor', topoColor);
-                    localStorage.setItem('textoColor', textoColor);
-                    localStorage.setItem('coracaoSrc', coracaoSrc);
-                    localStorage.setItem('navColor', navColor);
-                    localStorage.setItem('shaColor', shaColor);
-                    
-                }
-        
-                function carregarCores() {
-                    const bgColor = localStorage.getItem('bgColor');
-                    const topoColor = localStorage.getItem('topoColor');
-                    const textoColor = localStorage.getItem('textoColor');    
-                    const coracaoSrc = localStorage.getItem('coracaoSrc');
-                    const navColor = localStorage.getItem('navColor');
-                    const shaColor = localStorage.getItem('shaColor');
-                    
-                    
-        
-                    if (bgColor && topoColor && textoColor && coracaoSrc && navColor && shaColor) {
-                        document.body.style.backgroundColor = bgColor;
-                        topo.style.backgroundColor = topoColor;
-                        topo.style.color = textoColor;
-                        coracao_ver.src = coracaoSrc;
-                        toponav.forEach(link => {link.style.color = navColor; }); 
-                        document.querySelector('.inferior').style.color= bgColor
-                        FshaColor(shaColor)
-                        FbgColor(bgColor)
-                    }
-                }   
-
-        
-            function mudar_cor1() {
-                
-                topo.style.backgroundColor = ver_bor;
-                topo.style.color = bran;
-                coracao_ver.src= "imagens/coracao/branco.png"
-                toponav.forEach(link =>{link.style.color = bran})    
-                document.querySelector('.inferior').style.color= ver_cla
-                FshaColor(ver_bor)
-                FbgColor(ver_cla)
-
-
-                
-                salvarCores(ver_cla, ver_bor, bran , "imagens/coracao/branco.png", bran, ver_bor);
-                
-     
-            
-            }   
-
-            function mudar_cor2() {
-               
-                topo.style.backgroundColor = azul_bor;
-                topo.style.color = bran;
-                coracao_ver.src= "imagens/coracao/branco.png"
-                toponav.forEach(link =>{link.style.color = bran})
-                document.querySelector('.inferior').style.color= azul_cla
-                FshaColor(azul_bor)
-                FbgColor(azul_cla)
-
-                salvarCores(azul_cla, azul_bor, bran, "imagens/coracao/branco.png", bran, azul_bor);
-                
-        
-            }
-
-
-            function mudar_cor3(){
-                
-                topo.style.backgroundColor = pre
-                topo.style.color = ver;
-                coracao_ver.src= "imagens/coracao/vermelho.png"
-                toponav.forEach(link =>{link.style.color = ver;})
-                document.querySelector('.inferior').style.color= pre
-                FshaColor(ver)
-                FbgColor(pre)
-
-                salvarCores(pre, pre, ver, "imagens/coracao/vermelho.png", ver,ver);
-                
-          
-            }
-
-            function mudar_cor4(){
-               
-                topo.style.backgroundColor = pre
-                topo.style.color = azul;
-                coracao_ver.src= "imagens/coracao/azul.png"
-                toponav.forEach(link =>{link.style.color = azul;})
-                document.querySelector('.inferior').style.color= pre
-                FshaColor(azul)
-                FbgColor(pre)
-                salvarCores(pre, pre, azul, "imagens/coracao/azul.png", azul,azul);
-                
-          
-            }
-
-            function mudar_cor5(){
-              
-                topo.style.backgroundColor = pre
-                topo.style.color = roxo;
-                coracao_ver.src= "imagens/coracao/roxo.png"
-                toponav.forEach(link =>{link.style.color = roxo})
-                document.querySelector('.inferior').style.color= pre
-                FshaColor(roxo)
-                FbgColor(pre)
-
-                salvarCores(pre, pre, roxo, "imagens/coracao/roxo.png", roxo,roxo)
-                
-          
-            }
-            window.onload = carregarCores;
-
-    </script>
+    
     
         
     </div>
@@ -433,6 +304,9 @@
         <button class="mudar_cor5" onclick="mudar_cor5()">
             <img src="imagens/tema/roxo_preto.png" alt="Imagem" width=25px>  
         </button>
+        <button class="mudar_cor6" onclick="mudar_cor6()">
+            <img src="imagens/tema/amarelo_preto.png" alt="Imagem" width=25px>  
+        </button>
         
     
     </div>
@@ -441,7 +315,159 @@
   
     
 
+    <script>
 
+        const ver = ["#ff3131"];
+        const ver_cla = ["#ffc5c5"]
+        const bran = ["#ffffff"]
+        const azul = ["#0900ad"]
+        const azul_cla = ["#93b1ff"]
+        const pre = ["#000"]
+        const roxo = ["#a016a5"]
+        const ver_bor = ["#c62727"]
+        const azul_bor = ["#332e9b"]
+        const amar = ["#edbe00"]
+        const pre_2 = [" #0e0d0d"]
+
+
+        const topo = document.querySelector('.topo');
+        const toponav = document.querySelectorAll('.topo nav a')
+        const texto = document.querySelectorAll('.texto')
+        const coracao_ver = document.getElementById('coracao');
+      
+        
+        function salvarCores(bgColor, topoColor, textoColor, coracaoSrc, navColor, shaColor ,coracao_anoSrc) {
+
+                    localStorage.setItem('bgColor', bgColor);
+                    localStorage.setItem('topoColor', topoColor);
+                    localStorage.setItem('textoColor', textoColor);
+                    localStorage.setItem('coracaoSrc', coracaoSrc);
+                    localStorage.setItem('navColor', navColor);
+                    localStorage.setItem('shaColor', shaColor);
+                    localStorage.setItem('coracao_anoSrc', coracao_anoSrc);
+                    
+                }
+        
+                function carregarCores() {
+                    const bgColor = localStorage.getItem('bgColor');
+                    const topoColor = localStorage.getItem('topoColor');
+                    const textoColor = localStorage.getItem('textoColor');    
+                    const coracaoSrc = localStorage.getItem('coracaoSrc');
+                    const navColor = localStorage.getItem('navColor');
+                    const shaColor = localStorage.getItem('shaColor');
+                    const coracao_anoSrc = localStorage.getItem('coracao_anoSrc');
+                    
+                    
+                    
+        
+                    if (bgColor && topoColor && textoColor && coracaoSrc && navColor && shaColor && coracao_anoSrc) {
+                        document.body.style.backgroundColor = bgColor;
+                        topo.style.backgroundColor = topoColor;
+                        topo.style.color = textoColor;
+                        coracao_ver.src = coracaoSrc;
+                        toponav.forEach(link => {link.style.color = navColor; }); 
+                        document.querySelector('.inferior').style.color= bgColor
+                        FshaColor(shaColor)
+                        FbgColor(bgColor)
+                    }
+                }   
+
+        
+            function mudar_cor1() {
+                
+                topo.style.backgroundColor = ver_bor;
+                topo.style.color = bran;
+                coracao_ver.src= "imagens/coracao/branco.png"
+                toponav.forEach(link =>{link.style.color = bran})    
+                document.querySelector('.inferior').style.color= ver_cla
+                FshaColor(ver_bor)
+                FbgColor(ver_cla)
+
+
+                
+                salvarCores(ver_cla, ver_bor, bran , "imagens/coracao/branco.png", bran, ver_bor , "imagens/coracao/ano_vermelho_1.png");
+                
+     
+            
+            }   
+
+            function mudar_cor2() {
+               
+                topo.style.backgroundColor = azul_bor;
+                topo.style.color = bran;
+                coracao_ver.src= "imagens/coracao/branco.png"
+                toponav.forEach(link =>{link.style.color = bran})
+                document.querySelector('.inferior').style.color= azul_cla
+                FshaColor(azul_bor)
+                FbgColor(azul_cla)
+
+                salvarCores(azul_cla, azul_bor, bran, "imagens/coracao/branco.png", bran, azul_bor, "imagens/coracao/ano_azul_1.png");
+                
+        
+            }
+
+
+            function mudar_cor3(){
+                
+                topo.style.backgroundColor = pre
+                topo.style.color = ver;
+                coracao_ver.src= "imagens/coracao/vermelho.png"
+                toponav.forEach(link =>{link.style.color = ver;})
+                document.querySelector('.inferior').style.color= pre
+                FshaColor(ver)
+                FbgColor(pre)
+
+                salvarCores(pre, pre, ver, "imagens/coracao/vermelho.png", ver,ver, "imagens/coracao/ano_vermelho_2.png");
+                
+          
+            }
+
+            function mudar_cor4(){
+               
+                topo.style.backgroundColor = pre
+                topo.style.color = azul;
+                coracao_ver.src= "imagens/coracao/azul.png"
+                toponav.forEach(link =>{link.style.color = azul;})
+                document.querySelector('.inferior').style.color= pre
+                FshaColor(azul)
+                FbgColor(pre)
+                salvarCores(pre, pre, azul, "imagens/coracao/azul.png", azul,azul, "imagens/coracao/ano_azul_2.png");
+                
+          
+            }
+
+            function mudar_cor5(){
+              
+                topo.style.backgroundColor = pre
+                topo.style.color = roxo;
+                coracao_ver.src= "imagens/coracao/roxo.png"
+                toponav.forEach(link =>{link.style.color = roxo})
+                document.querySelector('.inferior').style.color= pre
+                FshaColor(roxo)
+                FbgColor(pre)
+
+                salvarCores(pre, pre, roxo, "imagens/coracao/roxo.png", roxo,roxo, "imagens/coracao/ano_roxo.png")
+                
+          
+            }
+
+            function mudar_cor6(){
+              
+                topo.style.backgroundColor = pre_2
+                topo.style.color = amar;
+                coracao_ver.src= "imagens/coracao/amarelo.png"
+                toponav.forEach(link =>{link.style.color = amar})
+                document.querySelector('.inferior').style.color= pre_2
+                FshaColor(amar)
+                FbgColor(pre_2)
+
+                salvarCores(pre_2, pre_2, amar, "imagens/coracao/amarelo.png", amar,amar, "imagens/coracao/ano_amarelo.png")
+                
+          
+            }
+            window.onload = carregarCores;
+
+    </script>
     <body>
 
     
